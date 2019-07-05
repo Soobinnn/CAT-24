@@ -1,5 +1,5 @@
 # CAT-24
-Cafe24-
+Cafe24-bitacademy 쇼핑몰 과제
 
 
 
