@@ -4,7 +4,7 @@ Cafe24-bitacademy 쇼핑몰 과제
 ## 개발환경
 #### Language : Java 1.8
 #### DB : MariaDB 10.1.34 (AWS RDS)
-#### Server : CentOS (AWS EC2)
+#### Server : Red Hat Enterprise Linux 8 (AWS EC2)
 
 # Wiki 문서
 
