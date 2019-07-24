@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:com/cafe24/config/app/properties/jdbc.properties")
-public class DBConfig {
+public class TestDBConfig {
 	
 	@Autowired
 	private Environment env;

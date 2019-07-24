@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MyBatisConfig {
-	
+public class TestMyBatisConfig 
+{
 	@Bean
 	public SqlSessionFactory sqlSessionFactoryBean(DataSource dataSource, ApplicationContext applicationContext) throws Exception {
 		SqlSessionFactoryBean sqlSessionFactoryBean 
@@ -22,7 +22,7 @@ public class MyBatisConfig {
 		return sqlSessionFactoryBean.getObject();
 	}
 	
-	@Bean(destroyMethod = "clearCache")
+	@Bean
 	public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);
 	}

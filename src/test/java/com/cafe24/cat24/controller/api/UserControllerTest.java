@@ -125,4 +125,40 @@ public class UserControllerTest
 		.andDo(print())
 		.andExpect(jsonPath("$.result", is("fail")));
 	}
+	
+	@Test
+	public void 로그인테스트() throws Exception
+	{
+		UserVo userVo = new UserVo();
+		//1. 일반 로그인 테스트
+		userVo.setEmail("isb9082@naver.com");
+		userVo.setPassword("dlatnqls1!test");
+		
+		ResultActions resultActions =
+				mockMvc
+					.perform(post("/api/users/login")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(new Gson().toJson(userVo)));
+		
+		resultActions
+			.andDo(print())
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.result", is("success")));
+		
+		//2. 이메일 예외처리 테스트
+		userVo.setEmail("isb9082");
+		userVo.setPassword("dlatnqls1!test");
+		
+		resultActions =
+				mockMvc
+					.perform(post("/api/users/login")
+							.contentType(MediaType.APPLICATION_JSON)
+							.content(new Gson().toJson(userVo)));
+		
+		resultActions
+			.andDo(print())
+			.andExpect(status().isBadRequest())
+			.andExpect(jsonPath("$.result", is("fail")));
+		
+	}
 }

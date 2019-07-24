@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="categories">
+	<insert id="insert" parameterType="categoriesvo">
+	<![CDATA[
+		INSERT INTO Category values(null, #{category_depth}, #{parent_category_no}, #{category_name},#{full_category_name}, #{full_category_no}, #{root_category_no}, #{display_order},  #{reg_id}, now(), #{update_id}, now())
+	]]>
+	</insert>
+	
+	<select id="list" resultType="categoriesvo">
+	<![CDATA[
+		SELECT * FROM Category ORDER BY display_order DESC
+	]]>
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT Count(*) FROM Category 
+	</select>
+</mapper>
