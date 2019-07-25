@@ -57,7 +57,6 @@ public class CategoriesControllerTest
 		categoriesvo.setFull_category_name("테스트3");
 		categoriesvo.setFull_category_no("0");
 		categoriesvo.setRoot_category_no(0);
-		categoriesvo.setDisplay_order(1);
 		categoriesvo.setReg_id("soobin");
 		categoriesvo.setUpdate_id("soobin");
 		ResultActions resultActions =
@@ -99,5 +98,30 @@ public class CategoriesControllerTest
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$.result", is("success")));
+	}
+	
+	@Test
+	public void 해당카테고리조회() throws Exception
+	{
+		// 일반 케이스
+		ResultActions resultActions =
+				mockMvc
+					.perform(get("/api/v1/admin/categories/3")
+					.contentType(MediaType.APPLICATION_JSON));
+		
+		resultActions
+			.andDo(print())
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.result", is("success")));
+		
+		// 없을 경우
+		resultActions =
+				mockMvc
+					.perform(get("/api/v1/admin/categories/1")
+					.contentType(MediaType.APPLICATION_JSON));
+		
+		resultActions
+		.andDo(print())
+		.andExpect(status().isBadRequest());
 	}
 }

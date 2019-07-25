@@ -3,7 +3,18 @@
 <mapper namespace="categories">
 	<insert id="insert" parameterType="categoriesvo">
 	<![CDATA[
-		INSERT INTO Category values(null, #{category_depth}, #{parent_category_no}, #{category_name},#{full_category_name}, #{full_category_no}, #{root_category_no}, #{display_order},  #{reg_id}, now(), #{update_id}, now())
+		INSERT INTO Category values(null, 
+			#{category_depth}, 
+			#{parent_category_no}, 
+			#{category_name},
+			#{full_category_name}, 
+			#{full_category_no}, 
+			#{root_category_no},  
+			( SELECT IFNULL( MAX( display_order ), 0 ) + 1 FROM Category a ),  
+			#{reg_id}, 
+			now(), 
+			#{update_id}, 
+			now())
 	]]>
 	</insert>
 	
@@ -14,6 +25,13 @@
 	</select>
 	
 	<select id="count" resultType="int">
-		SELECT Count(*) FROM Category 
+		SELECT COUNT(*) FROM Category 
 	</select>
+	
+	<select id="get" resultType="categoriesvo" parameterType="long">
+	<![CDATA[
+		SELECT * FROM Category WHERE category_no = #{category_no}
+	]]>
+	</select>
+	
 </mapper>

@@ -40,7 +40,6 @@ public class CategoriesDaoTest
 		categoriesvo.setFull_category_name("테스트");
 		categoriesvo.setFull_category_no("0");
 		categoriesvo.setRoot_category_no(0);
-		categoriesvo.setDisplay_order(0);
 		categoriesvo.setReg_id("test");
 		categoriesvo.setUpdate_id("test");
 		

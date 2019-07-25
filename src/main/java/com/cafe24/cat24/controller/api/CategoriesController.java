@@ -1,10 +1,15 @@
 package com.cafe24.cat24.controller.api;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +25,11 @@ import com.cafe24.cat24.vo.CategoriesVo;
 public class CategoriesController 
 {
 	@Autowired
+	private MessageSource messageSource;
+	
+	@Autowired
 	private CategoriesService categoriesService;
+	
 	
 	/** 카테고리 전체 목록  **/
 	@RequestMapping(value="/", method=RequestMethod.GET)
@@ -34,8 +43,8 @@ public class CategoriesController
 	@RequestMapping(value="/count", method=RequestMethod.GET)
 	public ResponseEntity<JSONResult> count()
 	{
+		Map<String, Integer> count = categoriesService.count();
 		
-		int count = categoriesService.count();
 		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(count));
 	}
 	
@@ -43,7 +52,18 @@ public class CategoriesController
 	@RequestMapping(value="/{category_no}", method=RequestMethod.GET)
 	public ResponseEntity<JSONResult> get(@PathVariable(value="category_no") Long category_no)
 	{
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(null));
+
+		CategoriesVo category = categoriesService.get(category_no);
+		
+		//해당 카테고리 번호가 없을 경우
+		if(category == null)
+		{
+			String message = messageSource.getMessage("NotEmpty.categoriesVo.category_no", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(category));
 	}
 	
 	/** 카테고리 등록 **/
@@ -58,6 +78,7 @@ public class CategoriesController
 	@RequestMapping(value="/{category_no}", method=RequestMethod.PUT)
 	public ResponseEntity<JSONResult> update(@RequestBody CategoriesVo categoriesVo, @PathVariable(value="category_no") Long category_no)
 	{
+		
 		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(categoriesVo));
 	}
 	
@@ -68,5 +89,4 @@ public class CategoriesController
 		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(categoriesVo));
 	}
 	
-
 }

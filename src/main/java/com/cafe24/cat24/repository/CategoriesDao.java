@@ -35,4 +35,9 @@ public class CategoriesDao
 		return sqlSession.selectOne("categories.count");
 	}
 	
+	/** 해당 카테고리 조회 **/
+	public CategoriesVo get(long category_no)
+	{
+		return sqlSession.selectOne("categories.get", category_no);
+	}
 }
