@@ -20,5 +20,6 @@ public interface CategoriesService
 	/** 해당 카테고리 조회 **/
 	public CategoriesVo get(long category_no);
 	
-	
+	/** 해당 카테고리 삭제 **/
+	public Boolean delete(Long category_no);
 }

@@ -84,9 +84,19 @@ public class CategoriesController
 	
 	/** 해당 카테고리 삭제 **/
 	@RequestMapping(value="/{category_no}", method=RequestMethod.DELETE)
-	public ResponseEntity<JSONResult> delete(@RequestBody CategoriesVo categoriesVo, @PathVariable(value="category_no") Long category_no)
+	public ResponseEntity<JSONResult> delete(@PathVariable(value="category_no") Long category_no)
 	{
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(categoriesVo));
+		Boolean del = categoriesService.delete(category_no);
+		
+		//해당 카테고리 번호가 없을 경우
+		if(del == false)
+		{
+			String message = messageSource.getMessage("NotEmpty.categoriesVo.category_no", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(del));
 	}
 	
 }

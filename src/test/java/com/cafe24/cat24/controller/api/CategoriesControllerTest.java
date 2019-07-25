@@ -3,6 +3,7 @@ package com.cafe24.cat24.controller.api;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -123,5 +124,23 @@ public class CategoriesControllerTest
 		resultActions
 		.andDo(print())
 		.andExpect(status().isBadRequest());
+	}
+	
+	@Test
+	public void 해당카테고리삭제() throws Exception
+	{
+		// 일반 케이스
+				ResultActions resultActions =
+						mockMvc
+							.perform(delete("/api/v1/admin/categories/9")
+							.contentType(MediaType.APPLICATION_JSON));
+				
+				/*resultActions
+					.andDo(print())
+					.andExpect(status().isOk())
+					.andExpect(jsonPath("$.result", is("success")));*/
+				resultActions
+				.andDo(print())
+				.andExpect(status().isBadRequest());
 	}
 }

@@ -46,4 +46,9 @@ public class CategoriesServiceImpl implements CategoriesService
 		return categoriesDao.get(category_no);
 	}	
 	
+	/** 해당 카테고리 삭제 **/
+	public Boolean delete(Long category_no)
+	{
+		return categoriesDao.delete(category_no);
+	}
 }

@@ -34,4 +34,11 @@
 	]]>
 	</select>
 	
+	<delete id="delete" parameterType="long">
+		<![CDATA[
+			DELETE 
+		  	FROM Category 
+		 	WHERE category_no = #{category_no}
+		]]>	
+	</delete>
 </mapper>

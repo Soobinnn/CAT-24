@@ -40,4 +40,11 @@ public class CategoriesDao
 	{
 		return sqlSession.selectOne("categories.get", category_no);
 	}
+	
+	/** 해당 카테고리 삭제 **/
+	public Boolean delete(Long category_no)
+	{
+		int del = sqlSession.delete("categories.delete",category_no);
+		return del == 1;
+	}
 }
