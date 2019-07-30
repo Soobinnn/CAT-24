@@ -34,4 +34,11 @@ public class ProductsDao
 	{
 		return sqlSession.selectOne("products.count");
 	}
+	
+	/** 해당 상품 조회 **/
+	public ProductsVo get(Long product_no)
+	{
+		return sqlSession.selectOne("products.get",product_no);
+	}
+	
 }

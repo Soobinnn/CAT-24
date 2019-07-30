@@ -63,7 +63,17 @@ public class ProductsController
 	@RequestMapping(value="/{product_no}", method=RequestMethod.GET)
 	public ResponseEntity<JSONResult> get(@PathVariable(value="product_no") Long product_no)
 	{
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(null));
+		ProductsVo product = productsService.get(product_no);
+		
+		// 해당 상품이  없을 경우
+		if(product == null)
+		{
+			String message = messageSource.getMessage("NotEmpty.productsVo.product_no", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(product));
 	}
 	
 	/** 상품 등록 **/

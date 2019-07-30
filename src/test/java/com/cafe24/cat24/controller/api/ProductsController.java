@@ -64,7 +64,7 @@ public class ProductsController
 		
 		ResultActions resultActions =
 				mockMvc
-				.perform(post("/api/v1/admin/product/")
+				.perform(post("/api/v1/admin/products/")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(new Gson().toJson(productsvo)));
 		
@@ -79,7 +79,7 @@ public class ProductsController
 	{
 		ResultActions resultActions =
 				mockMvc
-				.perform(get("/api/v1/admin/product/")
+				.perform(get("/api/v1/admin/products/")
 				.contentType(MediaType.APPLICATION_JSON));
 		
 		resultActions
@@ -87,6 +87,45 @@ public class ProductsController
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$.result", is("success")));
 			
+	}
+	
+	@Test
+	public void 상품전체갯수() throws Exception
+	{
+		ResultActions resultActions =
+				mockMvc
+					.perform(get("/api/v1/admin/products/count")
+					.contentType(MediaType.APPLICATION_JSON));
+		
+		resultActions
+			.andDo(print())
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.result", is("success")));
+	}
+	
+	@Test
+	public void 해당상품조회() throws Exception
+	{
+		// 일반 케이스
+		ResultActions resultActions =
+				mockMvc
+					.perform(get("/api/v1/admin/products/2")
+					.contentType(MediaType.APPLICATION_JSON));
+		
+		resultActions
+			.andDo(print())
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.result", is("success")));
+				
+		// 없을 경우
+		resultActions =
+				mockMvc
+					.perform(get("/api/v1/admin/products/5")
+					.contentType(MediaType.APPLICATION_JSON));
+				
+		resultActions
+		.andDo(print())
+		.andExpect(status().isBadRequest());
 	}
 	
 }

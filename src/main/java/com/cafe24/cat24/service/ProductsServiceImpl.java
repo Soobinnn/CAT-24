@@ -39,4 +39,10 @@ public class ProductsServiceImpl implements ProductsService
 		
 		return map;
 	}
+	
+	/** 해당 상품 조회 **/
+	public ProductsVo get(Long product_no)
+	{
+		return productsDao.get(product_no);
+	}
 }

@@ -32,4 +32,13 @@
 	<select id="count" resultType="int">
 		SELECT COUNT(*) FROM Product 
 	</select>
+	
+		
+	<select id="get" resultType="productsvo" parameterType="long">
+	<![CDATA[
+		SELECT * FROM Product WHERE product_no = #{product_no}
+	]]>
+	</select>
+	
+	
 </mapper>

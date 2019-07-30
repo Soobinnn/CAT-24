@@ -15,4 +15,7 @@ public interface ProductsService
 	
 	/** 상품 전체 갯수 **/
 	public Map<String,Integer> count();
+	
+	/** 해당 상품 조회 **/
+	public ProductsVo get(Long product_no);
 }
