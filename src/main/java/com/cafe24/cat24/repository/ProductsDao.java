@@ -48,4 +48,10 @@ public class ProductsDao
 		return del == 1;
 	}
 	
+	/** 해당 상품 수정 **/
+	public Boolean update(ProductsVo productsvo)
+	{
+		int update = sqlSession.update("products.update",productsvo);
+		return update ==1;
+	}
 }

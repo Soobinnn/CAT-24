@@ -21,4 +21,7 @@ public interface ProductsService
 	
 	/** 해당 상품 삭제 **/
 	public Boolean delete(Long product_no);
+	
+	/** 해당 상품 수정 **/
+	public Boolean update(ProductsVo productvo, Long product_no);
 }

@@ -4,6 +4,7 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -46,7 +47,7 @@ public class ProductsController
 	}
 	
 	@Test
-	@Ignore
+	
 	public void 상품등록() throws Exception
 	{
 		ProductsVo productsvo = new ProductsVo();
@@ -130,6 +131,7 @@ public class ProductsController
 	}
 	
 	@Test
+	@Ignore
 	public void 해당상품삭제() throws Exception
 	{
 		// 일반 케이스
@@ -145,5 +147,36 @@ public class ProductsController
 		resultActions
 		.andDo(print())
 		.andExpect(status().isBadRequest());
+	}
+	
+	@Test
+	public void 해당상품수정() throws Exception
+	{
+		ProductsVo productsvo = new ProductsVo();
+		
+		productsvo.setProduct_code("code2");
+		productsvo.setCustom_product_code("custom2");
+		productsvo.setProduct_name("캣타워2");
+		productsvo.setModel_name("cattower02");
+		productsvo.setCost_price(110000);
+		productsvo.setSelling_price(330000);
+		productsvo.setSummary("고양이들이 좋아하는 캣타워1");
+		productsvo.setDetail("고양이들이 좋아하는 캣타워 인기만점 12345678902");
+		productsvo.setSell_yn("Y");
+		productsvo.setDiscount_yn("Y");
+		productsvo.setCategory_no(1);
+		
+		// 일반 케이스
+		ResultActions resultActions =
+				mockMvc
+					.perform(put("/api/v1/admin/products/3")
+					.contentType(MediaType.APPLICATION_JSON)
+					.content(new Gson().toJson(productsvo)));
+				
+		resultActions
+			.andDo(print())
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.result", is("success")));
+		
 	}
 }

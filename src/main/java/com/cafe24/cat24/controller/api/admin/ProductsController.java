@@ -102,9 +102,20 @@ public class ProductsController
 	
 	/** 해당 상품 수정 **/
 	@PutMapping(value="/{product_no}")
-	public JSONResult update(@RequestBody ProductsVo productVo) 
+	public ResponseEntity<JSONResult> update(@RequestBody ProductsVo productvo, @PathVariable(value="product_no") Long product_no)
 	{
-		//guestbookService.writeContent(guestbookVo);
-		return JSONResult.success(productVo);
+		System.out.println(productvo);
+		System.out.println(product_no);
+		Boolean update = productsService.update(productvo, product_no);
+				
+		//해당 상품 번호가 없을 경우
+		if(update == false)
+		{
+			String message = messageSource.getMessage("NotEmpty.productsVo.product_no", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(update));
 	}
 }

@@ -48,4 +48,75 @@
 		]]>	
 	</delete>
 	
+	<update id="update" parameterType="productsvo">
+		<![CDATA[
+			UPDATE Product
+		   	SET product_code = #{product_code},
+		]]>
+		<if test="custom_product_code != ''">
+			<![CDATA[
+			custom_product_code=#{custom_product_code },
+			]]>
+		</if>	
+		<if test="product_name  != ''">
+			<![CDATA[
+			product_name =#{product_name},
+			]]>
+		</if>
+		<if test="model_name  != ''">
+			<![CDATA[
+			model_name =#{model_name},
+			]]>
+		</if>
+		<if test="cost_price  != ''">
+			<![CDATA[
+			cost_price =#{cost_price},
+			]]>
+		</if>
+		<if test="selling_price  != ''">
+			<![CDATA[
+			selling_price =#{selling_price},
+			]]>
+		</if>
+		<if test="summary  != ''">
+			<![CDATA[
+			summary =#{summary},
+			]]>
+		</if>
+		<if test="detail  != ''">
+			<![CDATA[
+			detail =#{detail},
+			]]>
+		</if>
+		<if test="product_image  != ''">
+			<![CDATA[
+			product_image =#{product_image},
+			]]>
+		</if>
+		<if test="product_subimage  != ''">
+			<![CDATA[
+			product_subimage =#{product_subimage},
+			]]>
+		</if>
+		<if test="sell_yn  != ''">
+			<![CDATA[
+			sell_yn =#{sell_yn},
+			]]>
+		</if>
+		<if test="discount_yn  != ''">
+			<![CDATA[
+			discount_yn =#{discount_yn},
+			]]>
+		</if>		
+		<if test="category_no  != ''">
+			<![CDATA[
+			category_no =#{category_no},
+			]]>
+		</if>			
+		<![CDATA[
+		       reg_id = #{reg_id },
+		       reg_date = now()
+		 WHERE product_no = #{product_no}      	 
+		]]>
+	</update>
 </mapper>
