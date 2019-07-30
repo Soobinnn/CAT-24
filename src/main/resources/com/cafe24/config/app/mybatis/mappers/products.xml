@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="products">
+	<select id="list" resultType="productsvo">
+	<![CDATA[
+		SELECT * FROM Product ORDER BY product_no DESC
+	]]>
+	</select>
+	
+	<insert id="insert" parameterType="productsvo">
+	<![CDATA[
+		INSERT INTO Product values(null, 
+			#{product_code}, 
+			#{custom_product_code}, 
+			#{product_name},
+			#{model_name}, 
+			#{cost_price},
+			#{selling_price}, 
+			#{summary},  
+			#{detail},  
+			#{product_image},  
+			#{product_subimage},  
+			#{sell_yn},  
+			#{discount_yn},    
+			#{reg_id},  
+			now(),  
+			#{category_no}
+			)
+	]]>
+	</insert>
+</mapper>
