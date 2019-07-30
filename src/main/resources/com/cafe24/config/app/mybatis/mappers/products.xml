@@ -28,4 +28,8 @@
 			)
 	]]>
 	</insert>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM Product 
+	</select>
 </mapper>

@@ -1,6 +1,7 @@
 package com.cafe24.cat24.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,11 @@ public class ProductsDao
 	{
 		int count = sqlSession.insert("products.insert",productVo);
 		return 1 == count;
+	}
+	
+	/** 상품 전체 갯수 **/
+	public int count()
+	{
+		return sqlSession.selectOne("products.count");
 	}
 }

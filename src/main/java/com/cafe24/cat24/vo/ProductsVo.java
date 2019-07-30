@@ -2,23 +2,40 @@ package com.cafe24.cat24.vo;
 
 import java.util.Date;
 
-public class ProductVo 
+public class ProductsVo 
 {
+	
+	/** 상품분류 **/
 	private long product_no;
+	/** 상품코드 **/
 	private String product_code;
+	/** 자체상품분류 **/
 	private String custom_product_code;
+	/** 상품명 **/
 	private String product_name;
+	/** 모델명 **/
 	private String model_name;
+	/** 원가 **/
 	private double cost_price;
+	/** 판매가 **/
 	private double selling_price;
+	/** 요약설명 **/
 	private String summary;
+	/** 설명 **/
 	private String detail;
+	/** 상품이미지 **/
 	private String product_image;
+	/** 추가이미지 **/
 	private String product_subimage;
+	/** 판매중여부 **/
 	private String sell_yn;
+	/** 할인여부 **/
 	private String discount_yn;
+	/** 등록자 **/
 	private String reg_id;
+	/** 등록일자 **/
 	private Date reg_Date;
+	/** 카테고리분류 **/
 	private long category_no;
 	
 	public long getProduct_no() {

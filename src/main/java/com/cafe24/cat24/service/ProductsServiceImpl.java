@@ -1,6 +1,8 @@
 package com.cafe24.cat24.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +26,17 @@ public class ProductsServiceImpl implements ProductsService
 	public Boolean add(ProductsVo productVo)
 	{
 		return productsDao.add(productVo);
+	}
+	
+	/** 상품 전체 갯수 **/
+	public Map<String,Integer> count()
+	{
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		int count = productsDao.count();
+		
+		map.put("count", count);
+		
+		return map;
 	}
 }

@@ -1,6 +1,7 @@
 package com.cafe24.cat24.controller.api.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -22,7 +23,7 @@ import com.cafe24.cat24.service.ProductsService;
 import com.cafe24.cat24.vo.ProductsVo;
 
 @RestController("productsAPIController")
-@RequestMapping("api/v1/admin/product")
+@RequestMapping("api/v1/admin/products")
 public class ProductsController 
 {
 	@Autowired
@@ -52,9 +53,10 @@ public class ProductsController
 	
 	/** 상품 전체 갯수 **/
 	@RequestMapping(value="/count", method=RequestMethod.GET)
-	public ResponseEntity<JSONResult> count(@RequestBody  ProductsVo productVo)
+	public ResponseEntity<JSONResult> count()
 	{
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(productVo));
+		Map<String, Integer> count = productsService.count();
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(count));
 	}
 	
 	/** 해당 상품 조회 **/
