@@ -86,10 +86,18 @@ public class ProductsController
 	
 	/** 상품 삭제 **/
 	@DeleteMapping(value="/{product_no}")
-	public JSONResult delete(@PathVariable(value="no") Long no, @RequestParam String password) {
-		Boolean result = false;
-		//boolean result = guestbookService.deleteContent();
-		return JSONResult.success(result ? no : -1);
+	public ResponseEntity<JSONResult> delete(@PathVariable(value="product_no") Long product_no) 
+	{
+		Boolean del = productsService.delete(product_no);
+		//해당 상품 번호가 없을 경우
+		if(del == false)
+		{
+			String message = messageSource.getMessage("NotEmpty.productsVo.product_no", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(del));
 	}
 	
 	/** 해당 상품 수정 **/

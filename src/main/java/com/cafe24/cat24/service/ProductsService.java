@@ -18,4 +18,7 @@ public interface ProductsService
 	
 	/** 해당 상품 조회 **/
 	public ProductsVo get(Long product_no);
+	
+	/** 해당 상품 삭제 **/
+	public Boolean delete(Long product_no);
 }

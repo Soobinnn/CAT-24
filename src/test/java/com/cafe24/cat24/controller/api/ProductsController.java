@@ -1,6 +1,7 @@
 package com.cafe24.cat24.controller.api;
 
 import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -128,4 +129,21 @@ public class ProductsController
 		.andExpect(status().isBadRequest());
 	}
 	
+	@Test
+	public void 해당상품삭제() throws Exception
+	{
+		// 일반 케이스
+		ResultActions resultActions =
+				mockMvc
+					.perform(delete("/api/v1/admin/products/2")
+					.contentType(MediaType.APPLICATION_JSON));
+				
+		/*resultActions
+			.andDo(print())
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.result", is("success")));*/
+		resultActions
+		.andDo(print())
+		.andExpect(status().isBadRequest());
+	}
 }

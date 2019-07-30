@@ -41,4 +41,11 @@ public class ProductsDao
 		return sqlSession.selectOne("products.get",product_no);
 	}
 	
+	/** 해당 상품 삭제 **/
+	public Boolean delete(Long product_no)
+	{
+		int del = sqlSession.delete("products.delete",product_no);
+		return del == 1;
+	}
+	
 }

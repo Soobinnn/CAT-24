@@ -45,4 +45,10 @@ public class ProductsServiceImpl implements ProductsService
 	{
 		return productsDao.get(product_no);
 	}
+	
+	/** 해당 상품 삭제 **/
+	public Boolean delete(Long product_no)
+	{
+		return productsDao.delete(product_no);
+	}
 }
