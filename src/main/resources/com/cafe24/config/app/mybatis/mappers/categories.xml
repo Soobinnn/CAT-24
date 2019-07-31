@@ -41,4 +41,50 @@
 		 	WHERE category_no = #{category_no}
 		]]>	
 	</delete>
+	
+	<update id="update" parameterType="categoriesvo">
+	<![CDATA[
+			UPDATE Category
+		   	SET category_name = #{category_name},
+		]]>
+		<if test="category_depth != ''">
+			<![CDATA[
+			category_depth=#{category_depth },
+			]]>
+		</if>	
+		<if test="parent_category_no  != ''">
+			<![CDATA[
+			parent_category_no =#{parent_category_no},
+			]]>
+		</if>
+		<if test="full_category_name  != ''">
+			<![CDATA[
+			full_category_name =#{full_category_name},
+			]]>
+		</if>
+		<if test="full_category_no  != ''">
+			<![CDATA[
+			full_category_no =#{full_category_no},
+			]]>
+		</if>
+		<if test="root_category_no  != ''">
+			<![CDATA[
+			root_category_no =#{root_category_no},
+			]]>
+		</if>
+		<if test="display_order  != ''">
+			<![CDATA[
+			display_order =#{display_order},
+			]]>
+		</if>
+		<if test="update_id  != ''">
+			<![CDATA[
+			update_id =#{update_id},
+			]]>
+		</if>
+		<![CDATA[
+		       update_date = now()
+		 WHERE category_no = #{category_no}      	 
+		]]>
+	</update>
 </mapper>

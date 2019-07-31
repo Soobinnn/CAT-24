@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.cafe24.cat24.repository.CategoriesDao;
 import com.cafe24.cat24.vo.CategoriesVo;
+import com.cafe24.cat24.vo.ProductsVo;
 
 @Service
 public class CategoriesServiceImpl implements CategoriesService
@@ -50,5 +51,13 @@ public class CategoriesServiceImpl implements CategoriesService
 	public Boolean delete(Long category_no)
 	{
 		return categoriesDao.delete(category_no);
+	}
+	
+	/** 해당 카테고리 수정 **/
+	public Boolean update(CategoriesVo categoriesVo, int category_no)
+	{
+		categoriesVo.setCategory_no(category_no);
+		
+		return categoriesDao.update(categoriesVo);
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.cafe24.cat24.vo.CategoriesVo;
+import com.cafe24.cat24.vo.ProductsVo;
 
 public interface CategoriesService 
 {
@@ -22,4 +23,7 @@ public interface CategoriesService
 	
 	/** 해당 카테고리 삭제 **/
 	public Boolean delete(Long category_no);
+	
+	/** 해당 카테고리 수정 **/
+	public Boolean update(CategoriesVo categoriesVo, int category_no);
 }

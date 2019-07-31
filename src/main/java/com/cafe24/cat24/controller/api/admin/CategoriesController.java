@@ -9,6 +9,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cafe24.cat24.dto.JSONResult;
 import com.cafe24.cat24.service.CategoriesService;
 import com.cafe24.cat24.vo.CategoriesVo;
+import com.cafe24.cat24.vo.ProductsVo;
 
 @RestController("categoriesAPIController")
 @RequestMapping("/api/v1/admin/categories")
@@ -72,13 +74,6 @@ public class CategoriesController
 		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(categoriesVo));
 	}
 	
-	/** 해당 카테고리 수정 **/
-	@RequestMapping(value="/{category_no}", method=RequestMethod.PUT)
-	public ResponseEntity<JSONResult> update(@RequestBody CategoriesVo categoriesVo, @PathVariable(value="category_no") Long category_no)
-	{
-		
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(categoriesVo));
-	}
 	
 	/** 해당 카테고리 삭제 **/
 	@RequestMapping(value="/{category_no}", method=RequestMethod.DELETE)
@@ -97,4 +92,20 @@ public class CategoriesController
 		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(del));
 	}
 	
+	/** 해당 카테고리 수정 **/
+	@RequestMapping(value="/{category_no}", method=RequestMethod.PUT)
+	public ResponseEntity<JSONResult> update(@RequestBody CategoriesVo categoriesVo, @PathVariable(value="category_no") int category_no)
+	{
+		Boolean update = categoriesService.update(categoriesVo, category_no);
+				
+		//해당 상품 번호가 없을 경우
+		if(update == false)
+		{
+			String message = messageSource.getMessage("NotEmpty.categoriesVo.category_no", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(update));
+	}
 }

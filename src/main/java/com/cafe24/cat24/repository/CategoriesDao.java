@@ -47,4 +47,12 @@ public class CategoriesDao
 		int del = sqlSession.delete("categories.delete",category_no);
 		return del == 1;
 	}
+	/** 해당 카테고리 수정 **/
+	public Boolean update(CategoriesVo categoriesVo)
+	{
+		int update = sqlSession.update("categories.update",categoriesVo);
+		return update == 1;
+	}
+	
+	
 }

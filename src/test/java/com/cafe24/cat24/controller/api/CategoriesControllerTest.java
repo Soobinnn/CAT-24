@@ -3,6 +3,7 @@ package com.cafe24.cat24.controller.api;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -47,7 +48,6 @@ public class CategoriesControllerTest
 	}
 	
 	@Test
-	@Ignore
 	public void 카테고리등록() throws Exception
 	{
 		CategoriesVo categoriesvo = new CategoriesVo();
@@ -142,5 +142,32 @@ public class CategoriesControllerTest
 				resultActions
 				.andDo(print())
 				.andExpect(status().isBadRequest());
+	}
+	
+	@Test
+	public void 해당카테고리수정() throws Exception
+	{
+		CategoriesVo categoriesvo = new CategoriesVo();
+		
+		categoriesvo.setCategory_depth(0);
+		categoriesvo.setParent_category_no(0);
+		categoriesvo.setCategory_name("테스트33");
+		categoriesvo.setFull_category_name("테스트33");
+		categoriesvo.setFull_category_no("0");
+		categoriesvo.setRoot_category_no(0);
+		categoriesvo.setReg_id("soobin");
+		categoriesvo.setUpdate_id("soobin");
+		
+		// 일반 케이스
+				ResultActions resultActions =
+						mockMvc
+							.perform(put("/api/v1/admin/categories/1")
+							.contentType(MediaType.APPLICATION_JSON)
+							.content(new Gson().toJson(categoriesvo)));
+						
+				resultActions
+					.andDo(print())
+					.andExpect(status().isOk())
+					.andExpect(jsonPath("$.result", is("success")));
 	}
 }
