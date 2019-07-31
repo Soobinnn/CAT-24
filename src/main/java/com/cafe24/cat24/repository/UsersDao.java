@@ -8,17 +8,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.cafe24.cat24.exception.UserDaoException;
-import com.cafe24.cat24.vo.UserVo;
+import com.cafe24.cat24.vo.UsersVo;
 
 @Repository
-public class UserDao 
+public class UsersDao 
 {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public UserVo get(String email) {
-		UserVo vo = new UserVo();
-		vo.setNo(2L);
+	/** 회원가입 **/
+	public Boolean join(UsersVo usersvo) 
+	{
+		int count = sqlSession.insert("users.insert", usersvo);
+		return 1 == count;
+	}
+	
+	/*public UsersVo get(String email) {
+		UsersVo vo = new UsersVo();
+	
 		vo.setName("둘리");
 		vo.setEmail("dooly@gmail.com");
 		vo.setPassword("1234");
@@ -26,27 +33,20 @@ public class UserDao
 		return vo;
 	}
 	
-	public UserVo get(Long no){
+	public UsersVo get(Long no){
 		return sqlSession.selectOne("user.getByNo", no);
 	}
 	
-	public UserVo get(String email, String password) throws UserDaoException {
+	public UsersVo get(String email, String password) throws UserDaoException {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("email", email);
 		map.put("password", password);
-		UserVo userVo = sqlSession.selectOne("user.getByEmailAndPassword", map);
+		UsersVo userVo = sqlSession.selectOne("user.getByEmailAndPassword", map);
 		
 		return userVo;
 	}	
 	
-	public Boolean insert(UserVo vo) {
-		System.out.println(vo);
-		int count = sqlSession.insert("user.insert", vo);
-		System.out.println(vo);
-		return 1 == count;
-	}
-	
-	public int update( UserVo userVo ) {
+	public int update( UsersVo userVo ) {
 		return sqlSession.update( "user.update", userVo );
-	}	
+	}	*/
 }
