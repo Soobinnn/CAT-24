@@ -20,8 +20,12 @@ import com.cafe24.cat24.service.CategoriesService;
 import com.cafe24.cat24.vo.CategoriesVo;
 import com.cafe24.cat24.vo.ProductsVo;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 @RestController("categoriesAPIController")
-@RequestMapping("/api/v1/admin/categories")
+@RequestMapping("api/v1/admin/categories")
 public class CategoriesController 
 {
 	@Autowired
@@ -32,6 +36,7 @@ public class CategoriesController
 	
 	
 	/** 카테고리 전체 목록  **/
+	@ApiOperation(value="카테고리 전체 목록")
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ResponseEntity<JSONResult> list()
 	{
@@ -40,6 +45,7 @@ public class CategoriesController
 	}
 	
 	/** 카테고리 전체 갯수 **/
+	@ApiOperation(value="카테고리 전체 갯수")
 	@RequestMapping(value="/count", method=RequestMethod.GET)
 	public ResponseEntity<JSONResult> count()
 	{
@@ -49,6 +55,10 @@ public class CategoriesController
 	}
 	
 	/** 해당 카테고리 조회 **/
+	@ApiOperation(value="해당 카테고리 조회")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="category_no", value="해당 카테고리 조회", required=true, dataType="Long", defaultValue="")
+	})
 	@RequestMapping(value="/{category_no}", method=RequestMethod.GET)
 	public ResponseEntity<JSONResult> get(@PathVariable(value="category_no") Long category_no)
 	{
@@ -67,6 +77,10 @@ public class CategoriesController
 	}
 	
 	/** 카테고리 등록 **/
+	@ApiOperation(value="카테고리 등록")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="categoriesVo", value="카테고리 등록", required=true, dataType="CategoriesVo", defaultValue="")
+	})
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public ResponseEntity<JSONResult> add(@RequestBody CategoriesVo categoriesVo)
 	{
@@ -76,6 +90,10 @@ public class CategoriesController
 	
 	
 	/** 해당 카테고리 삭제 **/
+	@ApiOperation(value="해당 카테고리 삭제")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="category_no", value="해당 카테고리 삭제", required=true, dataType="Long", defaultValue="")
+	})
 	@RequestMapping(value="/{category_no}", method=RequestMethod.DELETE)
 	public ResponseEntity<JSONResult> delete(@PathVariable(value="category_no") Long category_no)
 	{
@@ -93,6 +111,11 @@ public class CategoriesController
 	}
 	
 	/** 해당 카테고리 수정 **/
+	@ApiOperation(value="해당 카테고리 수정")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="category_no", value="해당 카테고리 수정", required=true, dataType="Long", defaultValue="")
+		
+	})
 	@RequestMapping(value="/{category_no}", method=RequestMethod.PUT)
 	public ResponseEntity<JSONResult> update(@RequestBody CategoriesVo categoriesVo, @PathVariable(value="category_no") int category_no)
 	{
