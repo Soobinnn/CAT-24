@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,12 +47,13 @@ public class UserControllerTest
 	
 	
 	@Test
+	@Ignore
 	public void 회원가입테스트() throws Exception 
 	{
 		UsersVo usersVo = new UsersVo();
 		
 		//1. 일반 회원가입 테스트
-		usersVo.setId("isb9082");
+		usersVo.setId("isb9081");
 		usersVo.setPassword("dlatnqls1!test");
 		usersVo.setName("soobin");
 		usersVo.setGender("M");
@@ -76,36 +78,65 @@ public class UserControllerTest
 		resultActions
 		.andDo(print())
 		.andExpect(status().isOk());
-		/*
+		
 		//2. 이름예외처리 테스트 : length must be between 2 and 8
-		userVo.setName("수");
-		userVo.setEmail("isb9082@gmail.com");
-		userVo.setPassword( "isb90822019!" );
-		userVo.setGender( "MALE" );
+		usersVo.setId("isb908222");
+		usersVo.setPassword("dlatnqls1!test");
+		
+		usersVo.setName("수");
+
+		usersVo.setGender("M");
+		usersVo.setZipcode("0000-0000");
+		usersVo.setAddress("서울특별시 서초구");
+		usersVo.setAddress_detail("반포동");
+		usersVo.setHome_number("02-587-9082");
+		usersVo.setPhone("010-3449-0918");
+		usersVo.setEmail("isb9082@gmail.com");
+		usersVo.setProfile("profile.jpg");
+		usersVo.setBlacklist("N");
+		usersVo.setLast_date("2019-07-31");
+		usersVo.setUsed_YN("N");
+		usersVo.setUpdate_id("isb9082");
+		
+		
 		
 		resultActions =
 		mockMvc
-			.perform(post("/api/users/join")
+			.perform(post("/api/v1/users/")
 					.contentType(MediaType.APPLICATION_JSON)
-					.content(new Gson().toJson(userVo)));
+					.content(new Gson().toJson(usersVo)));
 	
 		resultActions
-		.andDo(print())
-		.andExpect(status().isBadRequest())
-		.andExpect(jsonPath("$.result", is("fail")));
+			.andDo(print())
+			.andExpect(status().isBadRequest())
+			.andExpect(jsonPath("$.result", is("fail")));
 
 		
 		//2. 패스워드 예외처리 테스트 : 
-		userVo.setName("임수빈");
-		userVo.setEmail("isb9082@gmail.com");
-		userVo.setPassword( "isb90822019" );
-		userVo.setGender( "MALE" );
+		usersVo.setId("isb908222");
+		
+		usersVo.setPassword( "isb90822019" );
+		
+		usersVo.setName("soobin");
+		usersVo.setGender("M");
+		usersVo.setZipcode("0000-0000");
+		usersVo.setAddress("서울특별시 서초구");
+		usersVo.setAddress_detail("반포동");
+		usersVo.setHome_number("02-587-9082");
+		usersVo.setPhone("010-3449-0918");
+		usersVo.setEmail("isb9082@gmail.com");
+		usersVo.setProfile("profile.jpg");
+		usersVo.setBlacklist("N");
+		usersVo.setLast_date("2019-07-31");
+		usersVo.setUsed_YN("N");
+		usersVo.setUpdate_id("isb9082");
+		
 		
 		resultActions =
 		mockMvc
-			.perform(post("/api/users/join")
+			.perform(post("/api/v1/users/")
 					.contentType(MediaType.APPLICATION_JSON)
-					.content(new Gson().toJson(userVo)));
+					.content(new Gson().toJson(usersVo)));
 	
 		resultActions
 		.andExpect(status().isBadRequest())
@@ -113,16 +144,30 @@ public class UserControllerTest
 		.andExpect(jsonPath("$.result", is("fail")));
 
 		//3. 성별 예외처리 테스트 : 
-		userVo.setName("임수빈");
-		userVo.setEmail("kickscar@gmail.com");
-		userVo.setPassword( "isb90822019!" );
-		userVo.setGender( "s" );
+		/*usersVo.setId("isb9082");
+		usersVo.setPassword("dlatnqls1!test");
+		usersVo.setName("soobin");
+		
+		usersVo.setGender("s");
+		
+		usersVo.setZipcode("0000-0000");
+		usersVo.setAddress("서울특별시 서초구");
+		usersVo.setAddress_detail("반포동");
+		usersVo.setHome_number("02-587-9082");
+		usersVo.setPhone("010-3449-0918");
+		usersVo.setEmail("isb9082@gmail.com");
+		usersVo.setProfile("profile.jpg");
+		usersVo.setBlacklist("N");
+		usersVo.setLast_date("2019-07-31");
+		usersVo.setUsed_YN("N");
+		usersVo.setUpdate_id("isb9082");
+		
 		
 		resultActions =
 		mockMvc
-			.perform(post("/api/users/join")
+			.perform(post("/api/v1/users/")
 					.contentType(MediaType.APPLICATION_JSON)
-					.content(new Gson().toJson(userVo)));
+					.content(new Gson().toJson(usersVo)));
 	
 		resultActions
 		.andExpect(status().isBadRequest())
@@ -130,39 +175,69 @@ public class UserControllerTest
 		.andExpect(jsonPath("$.result", is("fail")));*/
 	}
 	
-/*	@Test
+	@Test
 	public void 로그인테스트() throws Exception
 	{
-		UserVo userVo = new UserVo();
+		UsersVo usersVo = new UsersVo();
+		
 		//1. 일반 로그인 테스트
-		userVo.setEmail("isb9082@naver.com");
-		userVo.setPassword("dlatnqls1!test");
+		usersVo.setId("isb9082");
+		usersVo.setPassword("dlatnqls1!test");
 		
 		ResultActions resultActions =
 				mockMvc
-					.perform(post("/api/users/login")
+					.perform(post("/api/v1/users/login")
 						.contentType(MediaType.APPLICATION_JSON)
-						.content(new Gson().toJson(userVo)));
+						.content(new Gson().toJson(usersVo)));
 		
 		resultActions
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andExpect(jsonPath("$.result", is("success")));
 		
-		//2. 이메일 예외처리 테스트
-		userVo.setEmail("isb9082");
-		userVo.setPassword("dlatnqls1!test");
+		//2. 아이디 예외처리 테스트
+		usersVo.setId(null);
 		
 		resultActions =
 				mockMvc
-					.perform(post("/api/users/login")
+					.perform(post("/api/v1/users/login")
 							.contentType(MediaType.APPLICATION_JSON)
-							.content(new Gson().toJson(userVo)));
+							.content(new Gson().toJson(usersVo)));
 		
 		resultActions
 			.andDo(print())
 			.andExpect(status().isBadRequest())
 			.andExpect(jsonPath("$.result", is("fail")));
 		
-	}*/
+		//3. 비밀번호 예외처리 테스트
+		usersVo.setId("isb9082");
+		usersVo.setPassword(null);
+		resultActions =
+				mockMvc
+					.perform(post("/api/v1/users/login")
+							.contentType(MediaType.APPLICATION_JSON)
+							.content(new Gson().toJson(usersVo)));
+		
+		resultActions
+			.andDo(print())
+			.andExpect(status().isBadRequest())
+			.andExpect(jsonPath("$.result", is("fail")));
+		
+		
+		//4. 아이디또는 패스워드 비일치 테스트
+		usersVo.setId("isb9082");
+		usersVo.setPassword("dlatnqls1!");
+		
+		resultActions =
+				mockMvc
+					.perform(post("/api/v1/users/login")
+							.contentType(MediaType.APPLICATION_JSON)
+							.content(new Gson().toJson(usersVo)));
+		
+		resultActions
+			.andDo(print())
+			.andExpect(status().isBadRequest())
+			.andExpect(jsonPath("$.result", is("fail")));
+		
+	}
 }

@@ -21,6 +21,7 @@ public class UsersVo
 	private String id;
 	
 	/** 비밀번호 **/
+	@NotEmpty
 	@Pattern(regexp="(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,20}", message="비밀번호는 8자 이상 20자 이하의 알파벳, 숫자, 특수문자를 조합하여 작성해야 합니다.") 
 	@Length(min=8, max=20, message="비밀번호는 8자 이상 20자 이하로 입력해야 합니다.")
 	private String password;		
@@ -230,5 +231,17 @@ public class UsersVo
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
+	@Override
+	public String toString() {
+		return "UsersVo [member_no=" + member_no + ", id=" + id + ", password=" + password + ", name=" + name
+				+ ", gender=" + gender + ", zipcode=" + zipcode + ", address=" + address + ", address_detail="
+				+ address_detail + ", home_number=" + home_number + ", phone=" + phone + ", email=" + email
+				+ ", profile=" + profile + ", blacklist=" + blacklist + ", blacklist_date=" + blacklist_date
+				+ ", last_date=" + last_date + ", used_YN=" + used_YN + ", reg_date=" + reg_date + ", update_id="
+				+ update_id + ", update_date=" + update_date + "]";
+	}
+	
+	
 	
 }

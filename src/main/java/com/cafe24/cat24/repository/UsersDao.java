@@ -23,30 +23,12 @@ public class UsersDao
 		return 1 == count;
 	}
 	
-	/*public UsersVo get(String email) {
+	/** 로그인 **/
+	public UsersVo login(UsersVo usersvo)
+	{
 		UsersVo vo = new UsersVo();
-	
-		vo.setName("둘리");
-		vo.setEmail("dooly@gmail.com");
-		vo.setPassword("1234");
-		//return sqlSession.selectOne("user.getByEmail", email);
+		vo = sqlSession.selectOne("users.getByEmailAndPassword",usersvo);
+
 		return vo;
 	}
-	
-	public UsersVo get(Long no){
-		return sqlSession.selectOne("user.getByNo", no);
-	}
-	
-	public UsersVo get(String email, String password) throws UserDaoException {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("email", email);
-		map.put("password", password);
-		UsersVo userVo = sqlSession.selectOne("user.getByEmailAndPassword", map);
-		
-		return userVo;
-	}	
-	
-	public int update( UsersVo userVo ) {
-		return sqlSession.update( "user.update", userVo );
-	}	*/
 }

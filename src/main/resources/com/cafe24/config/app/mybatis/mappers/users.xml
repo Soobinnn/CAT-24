@@ -6,19 +6,29 @@
 		<![CDATA[
 			INSERT INTO Member
 		    VALUES(null, #{id}, SHA2(#{password},256), 
-		    			AES_ENCRYPT('#{name}', HEX(SHA2("enc_key",512))), 
+		    			AES_ENCRYPT(#{name}, HEX(SHA2("enc_key",512))), 
 		    			#{gender}, 
-		    			AES_ENCRYPT('#{zipcode}', HEX(SHA2("enc_key",512))),
-		    			AES_ENCRYPT('#{address}', HEX(SHA2("enc_key",512))), 
-		    			AES_ENCRYPT('#{address_detail}', HEX(SHA2("enc_key",512))), 
-		    			AES_ENCRYPT('#{home_number}', HEX(SHA2("enc_key",512))), 
-		    			AES_ENCRYPT('#{phone}', HEX(SHA2("enc_key",512))),
-		    			AES_ENCRYPT('#{email}', HEX(SHA2("enc_key",512))), 
+		    			AES_ENCRYPT(#{zipcode}, HEX(SHA2("enc_key",512))),
+		    			AES_ENCRYPT(#{address}, HEX(SHA2("enc_key",512))), 
+		    			AES_ENCRYPT(#{address_detail}, HEX(SHA2("enc_key",512))), 
+		    			AES_ENCRYPT(#{home_number}, HEX(SHA2("enc_key",512))), 
+		    			AES_ENCRYPT(#{phone}, HEX(SHA2("enc_key",512))),
+		    			AES_ENCRYPT(#{email}, HEX(SHA2("enc_key",512))), 
 		    			#{profile}, #{blacklist}, #{blacklist_date}, #{last_date},
 		    			#{used_YN},  now(), #{update_id}, now())	
 		]]>
 	</insert>
-
+	
+	<select id="getByEmailAndPassword" resultType="usersvo" parameterType='usersvo'>
+		<![CDATA[	 
+			SELECT member_no, gender, AES_DECRYPT(name, HEX(SHA2("enc_key",512))) as name,
+			AES_DECRYPT(email, HEX(SHA2("enc_key",512))) as email, profile
+		  	FROM Member
+		 	WHERE id=#{id} 
+		   	AND password= SHA2(#{password},256)
+		]]>
+	</select>
+	
 	<!-- <select id="getByNo" resultType="uservo" parameterType='long'>
 		<![CDATA[	 
 		select no, name, email, gender
@@ -35,14 +45,7 @@
 		]]>
 	</select>
 	
-	<select id="getByEmailAndPassword" resultType="uservo" parameterType='map'>
-		<![CDATA[	 
-		select no, name
-		  from user 
-		 where email=#{email } 
-		   and password=#{password }
-		]]>
-	</select>
+	
 	
 	<update id="update" parameterType="uservo">
 		<![CDATA[

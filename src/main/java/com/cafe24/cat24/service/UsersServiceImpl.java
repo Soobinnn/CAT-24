@@ -17,4 +17,10 @@ public class UsersServiceImpl implements UsersService
 	{
 		return usersDao.join(usersVo);
 	}
+	
+	/** 로그인 **/
+	public UsersVo login(UsersVo usersVo)
+	{
+		return usersDao.login(usersVo);
+	}
 }

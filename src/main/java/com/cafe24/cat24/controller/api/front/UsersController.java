@@ -1,6 +1,8 @@
 package com.cafe24.cat24.controller.api.front;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -47,9 +49,9 @@ public class UsersController
 	}
 	
 	/** 회원 등록 **/
-	@ApiOperation(value="회원가입")
+	@ApiOperation(value="회원 등록")
 	@ApiImplicitParams({
-		@ApiImplicitParam(name="join", value="회원가입", required=true, dataType="string", defaultValue="")
+		@ApiImplicitParam(name="join", value="회원 등록", required=true, dataType="string", defaultValue="")
 	})
 	@PostMapping(value="/")
 	public ResponseEntity<JSONResult> join(@RequestBody @Valid UsersVo usersVo, BindingResult result) 
@@ -70,35 +72,47 @@ public class UsersController
 	
 	/** 로그인 **/
 	@PostMapping(value="/login")
-	public ResponseEntity<JSONResult> login(@RequestBody UsersVo userVo) 
+	public ResponseEntity<JSONResult> login(@RequestBody UsersVo usersVo) 
 	{
 		
 		Validator validator = 
 				Validation.buildDefaultValidatorFactory().getValidator();
 		
 		Set<ConstraintViolation<UsersVo>> validatorResults = 
-				validator.validateProperty(userVo, "email");
-		
+				validator.validateProperty(usersVo, "id");
+
 		if(validatorResults.isEmpty() == false) 
 		{
 			for(ConstraintViolation<UsersVo> validatorResult : validatorResults) 
 			{
 				//String message = validatorResult.getMessage();
-				String message = messageSource.getMessage("Email.userVo.email", null, LocaleContextHolder.getLocale());
+				String message = messageSource.getMessage("NotEmpty.usersVo.id_password", null, LocaleContextHolder.getLocale());
 				JSONResult result = JSONResult.fail(message);
 				
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
 			}
 		}
 		
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(null)); 
+		UsersVo vo= usersService.login(usersVo);
+		
+		if(vo==null)
+		{
+			String message = messageSource.getMessage("Fail.usersVo.id_password", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		Map<String, Object> info = new HashMap<String,Object>(); 
+		
+		info.put("member_no",vo.getMember_no());
+		info.put("id",usersVo.getId());
+		info.put("name", vo.getName());
+		info.put("gender",vo.getGender());
+		info.put("email",vo.getEmail());
+		info.put("profile",vo.getProfile());
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(info)); 
 	}
 	
-	/** 로그아웃 **/
-	@PostMapping(value="/logout")
-	public ResponseEntity<JSONResult> logout(@RequestBody UsersVo userVo) 
-	{
-		
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(null)); 
-	}
 }
