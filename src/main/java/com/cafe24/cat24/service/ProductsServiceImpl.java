@@ -52,7 +52,7 @@ public class ProductsServiceImpl implements ProductsService
 		return productsDao.delete(product_no);
 	}
 	
-	/** 해당 카테고리 수정 **/
+	/** 해당 상품 수정 **/
 	public Boolean update(ProductsVo productvo, Long product_no)
 	{
 		productvo.setProduct_no(product_no);

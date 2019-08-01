@@ -60,6 +60,7 @@ public class CategoriesControllerTest
 		categoriesvo.setRoot_category_no(0);
 		categoriesvo.setReg_id("soobin");
 		categoriesvo.setUpdate_id("soobin");
+		
 		ResultActions resultActions =
 		mockMvc
 			.perform(post("/api/v1/admin/categories/")

@@ -12,9 +12,10 @@ import com.cafe24.config.web.SwaggerConfig;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan({"com.cafe24.cat24.controller", "com.cafe24.cat24.exception"})
+@ComponentScan({"com.cafe24.cat24.controller"})
 //@Import({MVCConfig.class, SecurityConfig.class, FileuploadConfig.class, MessageConfig.class, SwaggerConfig.class})
-@Import({MVCConfig.class,  MessageConfig.class, SwaggerConfig.class})
-public class WebConfig {
+@Import({MVCConfig.class,  MessageConfig.class})
+public class WebConfig 
+{
 
 }

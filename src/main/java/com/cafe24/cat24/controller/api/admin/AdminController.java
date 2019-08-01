@@ -1,4 +1,4 @@
-package com.cafe24.cat24.controller.api;
+package com.cafe24.cat24.controller.api.admin;
 
 import java.util.List;
 
@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cafe24.cat24.dto.JSONResult;
 import com.cafe24.cat24.vo.AdminVo;
-import com.cafe24.cat24.vo.UserVo;
+import com.cafe24.cat24.vo.UsersVo;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 @RestController("adminAPIController")
-@RequestMapping("/v1/admin")
+@RequestMapping("api/v1/admin")
 public class AdminController 
 {
 	/** 관리자 로그인 **/
@@ -43,7 +43,7 @@ public class AdminController
 	
 	/** 관리자 로그아웃 **/
 	@PostMapping(value="/logout")
-	public ResponseEntity<JSONResult> logout(@RequestBody UserVo userVo) 
+	public ResponseEntity<JSONResult> logout(@RequestBody UsersVo userVo) 
 	{
 		
 		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(null)); 
@@ -55,7 +55,7 @@ public class AdminController
 		@ApiImplicitParam(name="join", value="회원가입", required=true, dataType="string", defaultValue="")
 	})
 	@PostMapping(value="/join")
-	public ResponseEntity<JSONResult> join(@RequestBody @Valid UserVo userVo, BindingResult result) 
+	public ResponseEntity<JSONResult> join(@RequestBody @Valid UsersVo userVo, BindingResult result) 
 	{
 		if( result.hasErrors() ) 
 		{

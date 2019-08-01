@@ -7,13 +7,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.cafe24.cat24.service.UserService;
-import com.cafe24.cat24.vo.UserVo;
+import com.cafe24.cat24.service.UsersService;
+import com.cafe24.cat24.vo.UsersVo;
 
 public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 	
 	@Autowired
-	private UserService userService;
+	private UsersService userService;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -29,11 +29,11 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 //		getWebApplicationContext(request.getServletContext());
 //		UserService userService = ac.getBean(UserService.class);
 		
-		UserVo userVo = new UserVo();
+		UsersVo userVo = new UsersVo();
 		userVo.setEmail(email);
 		userVo.setPassword(password);
 		
-		UserVo authUser = userService.getUser(userVo);
+		UsersVo authUser = userService.getUser(userVo);
 		if(authUser == null) {
 			response.sendRedirect(request.getContextPath() + "/user/login");
 			return false;

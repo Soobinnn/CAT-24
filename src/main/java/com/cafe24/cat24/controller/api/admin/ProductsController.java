@@ -36,7 +36,6 @@ public class ProductsController
 	@GetMapping(value="/")
 	public ResponseEntity<JSONResult> list() 
 	{
-
 		List<ProductsVo> list = productsService.list();
 		
 		// 상품이 아무것도 없을 경우
@@ -104,8 +103,6 @@ public class ProductsController
 	@PutMapping(value="/{product_no}")
 	public ResponseEntity<JSONResult> update(@RequestBody ProductsVo productvo, @PathVariable(value="product_no") Long product_no)
 	{
-		System.out.println(productvo);
-		System.out.println(product_no);
 		Boolean update = productsService.update(productvo, product_no);
 				
 		//해당 상품 번호가 없을 경우

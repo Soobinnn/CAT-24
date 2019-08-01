@@ -33,6 +33,7 @@ public class DBConfig {
 		return basicDataSource;
 	}
 	
+	
 	@Bean
 	public PlatformTransactionManager transactionManager( DataSource dataSource ) 
 	{

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.cafe24.cat24.vo.UserVo;
+import com.cafe24.cat24.vo.UsersVo;
 
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 
@@ -49,7 +49,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			return false;
 		}
 
-		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		UsersVo authUser = (UsersVo)session.getAttribute("authUser");
 		if(authUser == null) { //인증이 안 되어 있음
 			response.sendRedirect(request.getContextPath() + "/user/login" );
 			return false;
