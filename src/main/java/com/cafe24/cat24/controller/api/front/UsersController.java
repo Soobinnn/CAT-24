@@ -17,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,6 +70,38 @@ public class UsersController
 		}
 		
 		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(usersVo)); 
+	}
+	
+	/** 아이디 중복체크 **/
+	@GetMapping(value="/check/{id}")
+	public ResponseEntity<JSONResult>checkId(@PathVariable String id)
+	{
+		if(id==null)
+		{
+			String message = messageSource.getMessage("NotEmpty.usersVo.id", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		else if(id.length()<3 || id.length()>50)
+		{
+			String message = messageSource.getMessage("error.usersVo.id", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		Boolean check = usersService.checkId(id);
+		
+		if(check==false)
+		{
+			String message = messageSource.getMessage("Used.usersVo.id", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+
+		String message = messageSource.getMessage("Success.usersVo.id", null, LocaleContextHolder.getLocale());
+		JSONResult result = JSONResult.fail(message);
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(result));
 	}
 	
 	/** 로그인 **/

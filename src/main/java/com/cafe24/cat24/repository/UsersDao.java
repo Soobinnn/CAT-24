@@ -31,4 +31,15 @@ public class UsersDao
 
 		return vo;
 	}
+	
+	/** 아이디 중복 체크 **/
+	public Boolean checkId(String id)
+	{
+		UsersVo check = sqlSession.selectOne("users.checkId",id);
+		
+		if(check==null)
+			return true;
+		
+		return false;
+	}
 }

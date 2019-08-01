@@ -23,4 +23,10 @@ public class UsersServiceImpl implements UsersService
 	{
 		return usersDao.login(usersVo);
 	}
+	
+	/** 아이디 중복 체크 **/
+	public Boolean checkId(String id)
+	{
+		return usersDao.checkId(id);
+	}
 }

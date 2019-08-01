@@ -29,38 +29,13 @@
 		]]>
 	</select>
 	
-	<!-- <select id="getByNo" resultType="uservo" parameterType='long'>
+	<select id="checkId" resultType="long" parameterType="String">
 		<![CDATA[	 
-		select no, name, email, gender
-		  from user 
-		 where no = #{value }
-		]]>
-	</select>
-
-	<select id="getByEmail" resultType="uservo" parameterType='string'>
-		<![CDATA[	 
-		select no, name, email, gender
-		  from user 
-		 where email = #{value }
+			SELECT member_no
+			FROM Member
+			WHERE id=#{id}
 		]]>
 	</select>
 	
 	
-	
-	<update id="update" parameterType="uservo">
-		<![CDATA[
-		update user
-		   set name = #{name },
-		]]>
-		<if test="password != ''">
-			<![CDATA[
-			password=#{password },
-			]]>
-		</if>		   
-		<![CDATA[
-		       gender = #{gender }
-		       
-		 where no = #{no }      	 
-		]]>
-	</update> -->
 </mapper>

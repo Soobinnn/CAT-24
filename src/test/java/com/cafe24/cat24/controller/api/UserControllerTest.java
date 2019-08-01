@@ -240,4 +240,33 @@ public class UserControllerTest
 			.andExpect(jsonPath("$.result", is("fail")));
 		
 	}
+	@Test
+	public void 아이디중복테스트() throws Exception
+	{
+		//1. 일반 케이스 테스트
+		ResultActions resultActions =
+				mockMvc
+					.perform(get("/api/v1/users/check/isb9082")
+						.contentType(MediaType.APPLICATION_JSON));
+		
+		resultActions
+			.andDo(print())
+			.andExpect(status().isBadRequest())
+			.andExpect(jsonPath("$.result", is("fail")));
+		
+		
+		//2. 아이디 최소길이
+		resultActions =
+				mockMvc
+					.perform(get("/api/v1/users/check/y")
+						.contentType(MediaType.APPLICATION_JSON));
+		
+		resultActions
+			.andDo(print())
+			.andExpect(status().isBadRequest())
+			.andExpect(jsonPath("$.result", is("fail")));
+		
+	}
+	
+	
 }

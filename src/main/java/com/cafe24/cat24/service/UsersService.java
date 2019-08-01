@@ -9,4 +9,7 @@ public interface UsersService
 	
 	/** 로그인 **/
 	public UsersVo login(UsersVo usersVo);
+	
+	/** 아이디 중복 체크 **/
+	public Boolean checkId(String id);
 }
