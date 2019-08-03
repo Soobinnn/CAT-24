@@ -1,5 +1,7 @@
 package com.cafe24.cat24.controller.api.front;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -43,10 +45,11 @@ public class CartController
 	}
 	
 	
-	/** 해당 장바구니 조회 **//*
+	/** 해당 장바구니 조회 **/
 	@GetMapping("/{id}")
-	public ResponseEntity<JSONResult> get(@PathVariable String id)
+	public ResponseEntity<JSONResult> list(@PathVariable String id)
 	{
+		List<CartVo> list = cartService.list(id);
 		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(cartVo));
-	}*/
+	}
 }

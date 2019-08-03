@@ -2,6 +2,10 @@ package com.cafe24.cat24.vo;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.cafe24.cat24.validator.constraints.ValidYN;
+
 public class CartVo 
 {
 	/** 장바구니분류 **/
@@ -9,14 +13,18 @@ public class CartVo
 	/** 수량 **/
 	private long amount;
 	/** 구매여부 **/
+	@ValidYN
 	private String buy_YN;
 	/** 회원여부 **/
+	@ValidYN
 	private String member_YN;
 	/** 생성일 **/
 	private Date reg_date;
 	/** 회원번호 **/
+	@NotEmpty
 	private long member_no;
 	/**  상품분류 **/
+	@NotEmpty
 	private long product_no;
 	
 	public long getCart_no() {

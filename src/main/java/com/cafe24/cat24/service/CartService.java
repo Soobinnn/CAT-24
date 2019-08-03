@@ -6,4 +6,6 @@ public interface CartService
 {
 	/** 장바구니 생성 **/
 	public Boolean add(CartVo cartVo);
+	
+	
 }

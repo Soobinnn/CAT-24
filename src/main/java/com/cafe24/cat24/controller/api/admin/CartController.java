@@ -12,7 +12,7 @@ import com.cafe24.cat24.dto.JSONResult;
 import com.cafe24.cat24.vo.ProductsVo;
 
 @RestController("cartAPIController")
-@RequestMapping("api/v1/cart")
+@RequestMapping("api/v1/admin/cart")
 public class CartController 
 {
 	

@@ -47,8 +47,11 @@ public class CartControllerTest
 	{
 		CartVo cartvo = new CartVo();
 		
-		cartvo.setAmount(1);
-		cartvo.set
+		cartvo.setAmount(10);
+		cartvo.setBuy_YN("N");
+		cartvo.setMember_YN("N");
+		cartvo.setMember_no(1);
+		cartvo.setProduct_no(1);
 		
 		ResultActions resultActions =
 				mockMvc
@@ -60,6 +63,8 @@ public class CartControllerTest
 					.andDo(print())
 					.andExpect(status().isOk())
 					.andExpect(jsonPath("$.result", is("success")));
-
+				
 	}
+	
+	
 }
