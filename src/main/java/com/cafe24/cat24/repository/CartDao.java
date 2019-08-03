@@ -1,5 +1,7 @@
 package com.cafe24.cat24.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,5 +22,10 @@ public class CartDao
 		return 1 == count;
 	}
 	
-	
+	/** 해당 장바구니 조회**/
+	public List<CartVo> list(String id)
+	{
+		List<CartVo> list = sqlSession.selectList("cart.list",id);
+		return list;
+	}
 }

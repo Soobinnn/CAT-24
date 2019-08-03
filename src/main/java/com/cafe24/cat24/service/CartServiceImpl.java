@@ -1,5 +1,7 @@
 package com.cafe24.cat24.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +18,11 @@ public class CartServiceImpl implements CartService
 	public Boolean add(CartVo cartVo)
 	{
 		return cartDao.add(cartVo);
+	}
+	
+	/** 해당 장바구니 조회**/
+	public List<CartVo> list(String id)
+	{
+		return cartDao.list(id);
 	}
 }

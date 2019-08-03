@@ -2,6 +2,7 @@ package com.cafe24.cat24.controller.api;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -65,6 +66,20 @@ public class CartControllerTest
 					.andExpect(jsonPath("$.result", is("success")));
 				
 	}
-	
+	@Test
+	public void 해당장바구니조회() throws Exception
+	{
+
+		ResultActions resultActions =
+				mockMvc
+					.perform(get("/api/v1/cart/isb908222")
+						.contentType(MediaType.APPLICATION_JSON));
+				
+				resultActions
+					.andDo(print())
+					.andExpect(status().isOk())
+					.andExpect(jsonPath("$.result", is("success")));
+				
+	}
 	
 }

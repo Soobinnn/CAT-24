@@ -50,6 +50,6 @@ public class CartController
 	public ResponseEntity<JSONResult> list(@PathVariable String id)
 	{
 		List<CartVo> list = cartService.list(id);
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(cartVo));
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(list));
 	}
 }
