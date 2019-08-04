@@ -54,8 +54,8 @@ public class CategoriesControllerTest
 		
 		categoriesvo.setCategory_depth(0);
 		categoriesvo.setParent_category_no(0);
-		categoriesvo.setCategory_name("테스트3");
-		categoriesvo.setFull_category_name("테스트3");
+		categoriesvo.setCategory_name("테스트43");
+		categoriesvo.setFull_category_name("테스트43");
 		categoriesvo.setFull_category_no("0");
 		categoriesvo.setRoot_category_no(0);
 		categoriesvo.setReg_id("soobin");
@@ -74,6 +74,7 @@ public class CategoriesControllerTest
 	}
 	
 	@Test
+	@Ignore
 	public void 카테고리전체조회() throws Exception
 	{
 		ResultActions resultActions =
@@ -89,6 +90,7 @@ public class CategoriesControllerTest
 	}
 	
 	@Test
+	@Ignore
 	public void 카테고리전체갯수() throws Exception
 	{
 		ResultActions resultActions =
@@ -103,6 +105,7 @@ public class CategoriesControllerTest
 	}
 	
 	@Test
+	@Ignore
 	public void 해당카테고리조회() throws Exception
 	{
 		// 일반 케이스
@@ -128,6 +131,7 @@ public class CategoriesControllerTest
 	}
 	
 	@Test
+	@Ignore
 	public void 해당카테고리삭제() throws Exception
 	{
 		// 일반 케이스
@@ -146,6 +150,7 @@ public class CategoriesControllerTest
 	}
 	
 	@Test
+	@Ignore
 	public void 해당카테고리수정() throws Exception
 	{
 		CategoriesVo categoriesvo = new CategoriesVo();

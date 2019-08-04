@@ -13,72 +13,72 @@ public class AdminVo
 {
 	
 	@NotEmpty
-	private String ID;
+	private String id;
 	
 	@Pattern(regexp="(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,20}", message="비밀번호는 8자 이상 20자 이하의 알파벳, 숫자, 특수문자를 조합하여 작성해야 합니다.") 
 	@Length(min=8, max=20, message="비밀번호는 8자 이상 20자 이하로 입력해야 합니다.")
-	private String PASSWORD;
+	private String password;
 	
 	@NotEmpty
 	@Length(min=2, max=8, message="이름은 2자 이상 5자 이하로 입력해야 합니다.")
-	private String NAME;
+	private String name;
 	
 	@ValidYN
-	private String CHECK_USED;
+	private String used_YN;
 	
-	private String REG_ID;
-	private Date REG_DATE;
-	private String UPDATE_ID;
-	private Date UPDATE_DATE;
+	private String reg_id;
+	private Date reg_date;
+	private String update_id;
+	private Date update_date;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getUsed_YN() {
+		return used_YN;
+	}
+	public void setUsed_YN(String used_YN) {
+		this.used_YN = used_YN;
+	}
+	public String getReg_id() {
+		return reg_id;
+	}
+	public void setReg_id(String reg_id) {
+		this.reg_id = reg_id;
+	}
+	public Date getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Date reg_date) {
+		this.reg_date = reg_date;
+	}
+	public String getUpdate_id() {
+		return update_id;
+	}
+	public void setUpdate_id(String update_id) {
+		this.update_id = update_id;
+	}
+	public Date getUpdate_date() {
+		return update_date;
+	}
+	public void setUpdate_date(Date update_date) {
+		this.update_date = update_date;
+	}
 	
-	public String getID() {
-		return ID;
-	}
-	public void setID(String iD) {
-		ID = iD;
-	}
-	public String getPASSWORD() {
-		return PASSWORD;
-	}
-	public void setPASSWORD(String pASSWORD) {
-		PASSWORD = pASSWORD;
-	}
-	public String getNAME() {
-		return NAME;
-	}
-	public void setNAME(String nAME) {
-		NAME = nAME;
-	}
-	public String getCHECK_USED() {
-		return CHECK_USED;
-	}
-	public void setCHECK_USED(String cHECK_USED) {
-		CHECK_USED = cHECK_USED;
-	}
-	public String getREG_ID() {
-		return REG_ID;
-	}
-	public void setREG_ID(String rEG_ID) {
-		REG_ID = rEG_ID;
-	}
-	public Date getREG_DATE() {
-		return REG_DATE;
-	}
-	public void setREG_DATE(Date rEG_DATE) {
-		REG_DATE = rEG_DATE;
-	}
-	public String getUPDATE_ID() {
-		return UPDATE_ID;
-	}
-	public void setUPDATE_ID(String uPDATE_ID) {
-		UPDATE_ID = uPDATE_ID;
-	}
-	public Date getUPDATE_DATE() {
-		return UPDATE_DATE;
-	}
-	public void setUPDATE_DATE(Date uPDATE_DATE) {
-		UPDATE_DATE = uPDATE_DATE;
-	}
 
 	
 	

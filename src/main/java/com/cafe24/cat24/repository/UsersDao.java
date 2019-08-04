@@ -42,4 +42,19 @@ public class UsersDao
 		
 		return false;
 	}
+	
+	/** 회원 수정-_- **/
+	public Boolean update(UsersVo usersVo,String id)
+	{
+		int count = sqlSession.update("users.update", usersVo);
+		
+		return 1 == count;
+	}
+	
+	/** 회원 탈퇴-_- **/
+	public Boolean delete(String id)
+	{
+		int count = sqlSession.delete("users.delete", id);
+		return 1 == count;
+	}
 }

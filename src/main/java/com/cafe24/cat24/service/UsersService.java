@@ -12,4 +12,10 @@ public interface UsersService
 	
 	/** 아이디 중복 체크 **/
 	public Boolean checkId(String id);
+	
+	/** 회원 수정-_- **/
+	public Boolean update(UsersVo usersVo,String id);
+	
+	/** 회원 탈퇴-_- **/
+	public Boolean delete(String id);
 }

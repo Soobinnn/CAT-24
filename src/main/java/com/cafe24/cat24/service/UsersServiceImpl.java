@@ -29,4 +29,17 @@ public class UsersServiceImpl implements UsersService
 	{
 		return usersDao.checkId(id);
 	}
+	
+	/** 회원 수정-_- **/
+	public Boolean update(UsersVo usersVo,String id)
+	{
+		return usersDao.update(usersVo, id);
+	}
+	
+	/** 회원 탈퇴-_- **/
+	public Boolean delete(String id)
+	{
+		return usersDao.delete(id);
+	}
+	
 }

@@ -27,13 +27,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cafe24.cat24.dto.JSONResult;
 import com.cafe24.cat24.service.UsersService;
+import com.cafe24.cat24.vo.CategoriesVo;
 import com.cafe24.cat24.vo.UsersVo;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
-@RestController("userAPIController")
+@RestController("FrontusersAPIController")
 @RequestMapping("api/v1/users")
 public class UsersController 
 {
@@ -43,17 +44,11 @@ public class UsersController
 	@Autowired
 	private UsersService usersService;
 	
-	/** 회원 전체 목록 **/
-	@RequestMapping(value="/",method = RequestMethod.GET)
-	public  ResponseEntity<JSONResult> List(@RequestBody @Valid UsersVo userVo, BindingResult result)
-	{
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(userVo)); 
-	}
 	
 	/** 회원 등록 **/
 	@ApiOperation(value="회원 등록")
 	@ApiImplicitParams({
-		@ApiImplicitParam(name="join", value="회원 등록", required=true, dataType="string", defaultValue="")
+		@ApiImplicitParam(name="usersVo", value="회원 등록", required=true, dataType="UsersVo", defaultValue="")
 	})
 	@PostMapping(value="/")
 	public ResponseEntity<JSONResult> join(@RequestBody @Valid UsersVo usersVo, BindingResult result) 
@@ -73,6 +68,10 @@ public class UsersController
 	}
 	
 	/** 아이디 중복체크 **/
+	@ApiOperation(value="아이디 중복체크")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="id", value="아이디", required=true, dataType="String", defaultValue="")
+	})
 	@GetMapping(value="/check/{id}")
 	public ResponseEntity<JSONResult>checkId(@PathVariable String id)
 	{
@@ -105,6 +104,10 @@ public class UsersController
 	}
 	
 	/** 로그인 **/
+	@ApiOperation(value="로그인")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="usersVo", value="로그인", required=true, dataType="UsersVo", defaultValue="")
+	})
 	@PostMapping(value="/login")
 	public ResponseEntity<JSONResult> login(@RequestBody UsersVo usersVo) 
 	{
@@ -149,4 +152,46 @@ public class UsersController
 		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(info)); 
 	}
 	
+	/** 회원 탈퇴 **/
+	@ApiOperation(value="회원 탈퇴")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="id", value="회원아이디", required=true, dataType="String", defaultValue="")
+	})
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<JSONResult> delete(@PathVariable(value="id") String id)
+	{
+		Boolean del = usersService.delete(id);
+		
+		//해당 카테고리 번호가 없을 경우
+		if(del == false)
+		{
+			String message = messageSource.getMessage("NotEmpty.categoriesVo.category_no", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(del));
+	}
+	
+	/** 회원 수정 **/
+	@ApiOperation(value="회원 수정")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="id", value="아이디", required=true, dataType="String", defaultValue=""),
+		@ApiImplicitParam(name="usersVo", value="회원 수정", required=true, dataType="UsersVo", defaultValue="")
+	})
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<JSONResult> update(@RequestBody UsersVo usersVo, @PathVariable(value="id") String id)
+	{
+		Boolean update = usersService.update(usersVo, id);
+				
+		//해당 상품 번호가 없을 경우
+		if(update == false)
+		{
+			String message = messageSource.getMessage("NotEmpty.categoriesVo.category_no", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(update));
+	}
 }

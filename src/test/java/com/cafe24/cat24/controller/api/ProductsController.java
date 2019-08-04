@@ -47,7 +47,7 @@ public class ProductsController
 	}
 	
 	@Test
-	
+	@Ignore
 	public void 상품등록() throws Exception
 	{
 		ProductsVo productsvo = new ProductsVo();

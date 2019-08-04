@@ -33,9 +33,9 @@ public class AdminControllerTest
 				build();
 	}
 	
-	@Test
+/*	@Test
 	public void 관리자로그인테스트() throws Exception
 	{
 		AdminVo adminVo = new AdminVo();
-	}
+	}*/
 }
