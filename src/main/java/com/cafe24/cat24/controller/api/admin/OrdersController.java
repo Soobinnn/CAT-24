@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/admin/orders")
 public class OrdersController 
 {
-	*//** 전체 주문 조회 **//*
+	/** 전체 주문 조회 **//*
 	
 	*//** 전체 주문 갯수 **//*
 	

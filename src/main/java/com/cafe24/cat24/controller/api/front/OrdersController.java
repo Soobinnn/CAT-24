@@ -1,6 +1,7 @@
 package com.cafe24.cat24.controller.api.front;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -43,7 +44,7 @@ public class OrdersController
 			}
 			return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(add));
 		}
-		/** 주문내역 전체 조회**//*
+		/** 해당 주문내역 전체 조회 -_- **/
 		@GetMapping("/{id}")
 		public ResponseEntity<JSONResult> list(@PathVariable String id)
 		{
@@ -51,9 +52,31 @@ public class OrdersController
 			return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(list));
 		}
 		
-		*//** 주문내역 갯수 **//*
+		/** 주문내역 갯수 -_- **/
 		@GetMapping("/{id}/count")
-		*//** 해당 주문내역 조회**//*
-		@GetMapping("/{id}/{order_id}")*/
+		public ResponseEntity<JSONResult> count()
+		{
+			Map<String, Integer> count = ordersService.count();
+			
+			return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(count));
+		}
+		
+		/** 해당 주문내역 조회 -_- **/
+		@GetMapping("/{id}/{order_id}")
+		public ResponseEntity<JSONResult> get(@PathVariable(value="id") String id, @PathVariable(value="order_id") String order_id)
+		{
+			OrdersVo orders = ordersService.get(id, order_id);
+			
+			//해당 아이디가 없을 경우
+			if(orders == null)
+			{
+				String message = messageSource.getMessage("NotEmpty.usersVo.id", null, LocaleContextHolder.getLocale());
+				JSONResult result = JSONResult.fail(message);
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+			}
+			
+			return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(orders));
+		}
+		
 		
 }
