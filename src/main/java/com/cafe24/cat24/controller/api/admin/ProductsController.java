@@ -22,6 +22,10 @@ import com.cafe24.cat24.dto.JSONResult;
 import com.cafe24.cat24.service.ProductsService;
 import com.cafe24.cat24.vo.ProductsVo;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 @RestController("productsAPIController")
 @RequestMapping("api/v1/admin/products")
 public class ProductsController 
@@ -33,6 +37,7 @@ public class ProductsController
 	private ProductsService productsService;
 
 	/** 상품 전체 목록 **/
+	@ApiOperation(value="상품 전체 목록")
 	@GetMapping(value="/")
 	public ResponseEntity<JSONResult> list() 
 	{
@@ -51,6 +56,7 @@ public class ProductsController
 	}
 	
 	/** 상품 전체 갯수 **/
+	@ApiOperation(value="상품 전체 갯수")
 	@RequestMapping(value="/count", method=RequestMethod.GET)
 	public ResponseEntity<JSONResult> count()
 	{
@@ -59,6 +65,10 @@ public class ProductsController
 	}
 	
 	/** 해당 상품 조회 **/
+	@ApiOperation(value="해당 상품 조회")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="product_no", value="상품번호", required=true, dataType="long", defaultValue="")
+	})
 	@RequestMapping(value="/{product_no}", method=RequestMethod.GET)
 	public ResponseEntity<JSONResult> get(@PathVariable(value="product_no") Long product_no)
 	{
@@ -76,6 +86,10 @@ public class ProductsController
 	}
 	
 	/** 상품 등록 **/
+	@ApiOperation(value="상품등록")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="productVo", value="상품등록", required=true, dataType="ProductsVo", defaultValue="")
+	})
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public ResponseEntity<JSONResult> add(@RequestBody ProductsVo productVo) 
 	{
@@ -84,6 +98,10 @@ public class ProductsController
 	}
 	
 	/** 상품 삭제 **/
+	@ApiOperation(value="상품삭제")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="product_no", value="상품번호", required=true, dataType="long", defaultValue="")
+	})
 	@DeleteMapping(value="/{product_no}")
 	public ResponseEntity<JSONResult> delete(@PathVariable(value="product_no") Long product_no) 
 	{
@@ -100,6 +118,11 @@ public class ProductsController
 	}
 	
 	/** 해당 상품 수정 **/
+	@ApiOperation(value="상품수정")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="product_no", value="상품번호", required=true, dataType="long", defaultValue=""),
+		@ApiImplicitParam(name="productsVo", value="상품t수정",  required=true, dataType="ProductsVo", defaultValue="")
+	})
 	@PutMapping(value="/{product_no}")
 	public ResponseEntity<JSONResult> update(@RequestBody ProductsVo productvo, @PathVariable(value="product_no") Long product_no)
 	{
