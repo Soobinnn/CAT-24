@@ -5,7 +5,7 @@ import java.util.Date;
 public class OrdersVo 
 {
 	/** 주문번호 **/
-	private long order_no;
+	private String order_no;
 	
 	/** 배송번호 **/
 	private long delivery_no;
@@ -36,11 +36,13 @@ public class OrdersVo
 	private double sum;
 
 	
-	public long getOrder_no() {
+	
+
+	public String getOrder_no() {
 		return order_no;
 	}
 
-	public void setOrder_no(long order_no) {
+	public void setOrder_no(String order_no) {
 		this.order_no = order_no;
 	}
 
@@ -114,6 +116,14 @@ public class OrdersVo
 
 	public void setSum(double sum) {
 		this.sum = sum;
+	}
+
+	@Override
+	public String toString() {
+		return "OrdersVo [order_no=" + order_no + ", delivery_no=" + delivery_no + ", order_date=" + order_date
+				+ ", total_sum=" + total_sum + ", access_YN=" + access_YN + ", unmember_password=" + unmember_password
+				+ ", member_no=" + member_no + ", orderdetail_no=" + orderdetail_no + ", amount=" + amount + ", sum="
+				+ sum + "]";
 	}
 
 	
