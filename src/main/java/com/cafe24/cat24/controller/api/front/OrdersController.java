@@ -19,6 +19,10 @@ import com.cafe24.cat24.dto.JSONResult;
 import com.cafe24.cat24.service.OrdersService;
 import com.cafe24.cat24.vo.OrdersVo;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 @RestController("FrontOrdersAPIController")
 @RequestMapping("api/v1/orders")
 public class OrdersController 
@@ -30,6 +34,10 @@ public class OrdersController
 		private OrdersService ordersService;
 	
 		/** 주문신청 **/
+		@ApiOperation(value="주문신청")
+		@ApiImplicitParams({
+			@ApiImplicitParam(name="orderVo", value="주문", required=true, dataType="OrderVo", defaultValue="")
+		})
 		@PostMapping("/")
 		public ResponseEntity<JSONResult> add(@RequestBody OrdersVo orderVo) 
 		{
@@ -44,7 +52,12 @@ public class OrdersController
 			}
 			return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(add));
 		}
+		
 		/** 해당 주문내역 전체 조회 -_- **/
+		@ApiOperation(value="해당 주문내역 전체 조회")
+		@ApiImplicitParams({
+			@ApiImplicitParam(name="id", value="회원아이디", required=true, dataType="String", defaultValue="")
+		})
 		@GetMapping("/{id}")
 		public ResponseEntity<JSONResult> list(@PathVariable String id)
 		{
@@ -53,6 +66,7 @@ public class OrdersController
 		}
 		
 		/** 주문내역 갯수 -_- **/
+		@ApiOperation(value="주문내역 갯수")
 		@GetMapping("/{id}/count")
 		public ResponseEntity<JSONResult> count()
 		{
@@ -62,6 +76,11 @@ public class OrdersController
 		}
 		
 		/** 해당 주문내역 조회 -_- **/
+		@ApiOperation(value="해당 주문내역 조회")
+		@ApiImplicitParams({
+			@ApiImplicitParam(name="id", value="회원아이디", required=true, dataType="String", defaultValue=""),
+			@ApiImplicitParam(name="order_id", value="주문코드", required=true, dataType="String", defaultValue="")
+		})
 		@GetMapping("/{id}/{order_id}")
 		public ResponseEntity<JSONResult> get(@PathVariable(value="id") String id, @PathVariable(value="order_id") String order_id)
 		{
