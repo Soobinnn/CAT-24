@@ -76,13 +76,21 @@ public class CategoriesController
 	}
 	
 	/** 해당 카테고리 상품 조회 **/
+	@ApiOperation(value="해당 카테고리 상품 조회")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="category_no", value="해당 카테고리 조회", required=true, dataType="Long", defaultValue="")
+	})
 	@GetMapping(value="/{category_no}/products")
-	public ResponseEntity<JSONResult> product(@RequestBody CategoriesVo categoriesVo, @PathVariable(value="category_no") Long category_no)
+	public ResponseEntity<JSONResult> product(@PathVariable(value="category_no") Long category_no)
 	{
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(categoriesVo));
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(null));
 	}
 	
 	/** 해당 카테고리 상품 갯수 **/
+	@ApiOperation(value="해당 카테고리 상품 갯수")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="category_no", value="해당 카테고리 조회", required=true, dataType="Long", defaultValue="")
+	})
 	@GetMapping(value="/{category_no}/products/count")
 	public ResponseEntity<JSONResult> productcount(@RequestBody CategoriesVo categoriesVo, @PathVariable(value="category_no") Long category_no)
 	{
