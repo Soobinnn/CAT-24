@@ -18,6 +18,10 @@ import com.cafe24.cat24.dto.JSONResult;
 import com.cafe24.cat24.service.CartService;
 import com.cafe24.cat24.vo.CartVo;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 @RestController("FrontCartAPIController")
 @RequestMapping("/api/v1/cart")
 public class CartController 
@@ -29,6 +33,10 @@ public class CartController
 	private CartService cartService;
 	
 	/** 장바구니 생성 **/
+	@ApiOperation(value="장바구니 생성")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="cartVo", value="장바구니", required=true, dataType="CartVo", defaultValue="")	
+		})
 	@PostMapping("/")
 	public ResponseEntity<JSONResult> add(@RequestBody CartVo cartVo)
 	{
@@ -46,6 +54,10 @@ public class CartController
 	
 	
 	/** 해당 장바구니 조회 **/
+	@ApiOperation(value="해당 장바구니 조회")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="id", value="회원아이디", required=true, dataType="String", defaultValue="")
+		})
 	@GetMapping("/{id}")
 	public ResponseEntity<JSONResult> list(@PathVariable String id)
 	{
