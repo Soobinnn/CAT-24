@@ -36,20 +36,52 @@
         <form>
           <div class="form-group">
             <div class="form-row">
-              <div class="col-md-6">
+              <div class="col-md-10">
                 <div class="form-label-group">
-                  <input type="text" id="firstName" class="form-control" placeholder="First name" required="required" autofocus="autofocus">
-                  <label for="firstName">First name</label>
+                  <input type="text" id="id" class="form-control" placeholder="ID" required="required" autofocus="autofocus">
+                  <label for="id">ID</label>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-2">
                 <div class="form-label-group">
-                  <input type="text" id="lastName" class="form-control" placeholder="Last name" required="required">
-                  <label for="lastName">Last name</label>
                 </div>
               </div>
             </div>
           </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-10">
+                <div class="form-label-group">
+                   <input type="password" id="password" class="form-control" placeholder="PASSWORD" required="required">
+             	   <label for="password">PASSWORD</label>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-label-group">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-10">
+                <div class="form-label-group">
+                   <input type="text" id="name" class="form-control" placeholder="NAME" required="required">
+             	   <label for="name">NAME</label>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-label-group">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-label-group">
+              <input type="radio" id="gender" class="form-control" placeholder="gender" required="required">
+              <label for="inputEmail">Email address</label>
+            </div>
+          </div>      
           <div class="form-group">
             <div class="form-label-group">
               <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">

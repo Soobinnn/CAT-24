@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class mainController 
 {
+	/** 메인 페이지 **/
 	@RequestMapping("/")
 	public String main(Model model)
 	{

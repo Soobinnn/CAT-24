@@ -38,23 +38,48 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
+        <a href="index.html">상품</a>
       </li>
       <li class="breadcrumb-item active">Portfolio 2</li>
     </ol>
 
     <div class="row">
-      <div class="col-lg-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project One</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
+          <!-- Sidebar Column -->
+      <div class="col-lg-3 mb-4">
+        <div class="list-group">
+          <a href="index.html" class="list-group-item">Home</a>
+          <a href="about.html" class="list-group-item">About</a>
+          <a href="services.html" class="list-group-item">Services</a>
+          <a href="contact.html" class="list-group-item">Contact</a>
+          <a href="portfolio-1-col.html" class="list-group-item">1 Column Portfolio</a>
+          <a href="portfolio-2-col.html" class="list-group-item">2 Column Portfolio</a>
+          <a href="portfolio-3-col.html" class="list-group-item">3 Column Portfolio</a>
+          <a href="portfolio-4-col.html" class="list-group-item">4 Column Portfolio</a>
+          <a href="portfolio-item.html" class="list-group-item">Single Portfolio Item</a>
+          <a href="blog-home-1.html" class="list-group-item">Blog Home 1</a>
+          <a href="blog-home-2.html" class="list-group-item">Blog Home 2</a>
+          <a href="blog-post.html" class="list-group-item">Blog Post</a>
+          <a href="full-width.html" class="list-group-item">Full Width Page</a>
+          <a href="sidebar.html" class="list-group-item active">Sidebar Page</a>
+          <a href="faq.html" class="list-group-item">FAQ</a>
+          <a href="404.html" class="list-group-item">404</a>
+          <a href="pricing.html" class="list-group-item">Pricing Table</a>
         </div>
       </div>
+      <!-- Content Column -->
+      <div class="col-lg-9 mb-4">
+        <h2>Section Heading</h2>
+             <div class="col-lg-6 portfolio-item">
+        		<div class="card h-100">
+          		<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          			<div class="card-body">
+           			 <h4 class="card-title">
+            			  <a href="#">Project One</a>
+            		</h4>
+            		<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+          			</div>
+        		</div>
+     		 </div>
       <div class="col-lg-6 portfolio-item">
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
@@ -137,7 +162,9 @@
         </a>
       </li>
     </ul>
-
+        
+        </div>
+    </div>
   </div>
   <!-- /.container -->
 
