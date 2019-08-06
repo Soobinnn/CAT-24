@@ -40,5 +40,6 @@
 
 	<modules>
 		<module>CAT-24-Backend</module>
+		<module>CAT-24-Frontend</module>
 	</modules>
 </project>
