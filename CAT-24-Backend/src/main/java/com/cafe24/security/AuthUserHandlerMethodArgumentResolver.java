@@ -13,7 +13,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import com.cafe24.cat24.vo.UsersVo;
 
 public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
-
+/*
 
 
 	@Override
@@ -53,5 +53,5 @@ public class AuthUserHandlerMethodArgumentResolver implements HandlerMethodArgum
 		}
 		
 		return true;
-	}
+	}*/
 }

@@ -12,7 +12,7 @@ import com.cafe24.cat24.vo.UsersVo;
 
 public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 	
-	@Autowired
+	/*@Autowired
 	private UsersService userService;
 	
 	@Override
@@ -45,6 +45,6 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		response.sendRedirect( request.getContextPath() );
 
 		return false;
-	}
+	}*/
 
 }
