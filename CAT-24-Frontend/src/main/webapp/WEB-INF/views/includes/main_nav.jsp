@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-coral fixed-top">
     <div class="container">
       <a id="nav-title" class="navbar-brand" href="${pageContext.servletContext.contextPath }/">Cat 24</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
             <a class="nav-link" href="services.html">장바구니</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">로그인</a>
+            <a class="nav-link" href="${pageContext.servletContext.contextPath}/user/login">로그인</a>
           </li>
            <li class="nav-item">
             <a class="nav-link" href="contact.html">회원가입</a>
