@@ -10912,3 +10912,12 @@ body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
 }
+
+.bg-coral {
+  background-color: #FF6D70 !important;
+}
+#nav-title
+{
+	font-size : 1.5rem;
+	font-weight : 800;
+}
