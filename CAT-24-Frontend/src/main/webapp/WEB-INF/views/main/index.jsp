@@ -20,7 +20,7 @@
 
   <!-- Custom styles for this template -->
   <link href="${pageContext.servletContext.contextPath }/assets/css/main.css" rel="stylesheet">
-
+  
 </head>
 
 <body>

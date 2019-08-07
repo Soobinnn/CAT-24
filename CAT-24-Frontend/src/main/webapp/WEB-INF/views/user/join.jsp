@@ -38,7 +38,7 @@
             <div class="form-row">
               <div class="col-md-10">
                 <div class="form-label-group">
-                  <input type="text" id="id" class="form-control" placeholder="ID" required="required" autofocus="autofocus">
+                  <input type="text" id="id" name="id" class="form-control" placeholder="ID" required="required" autofocus="autofocus">
                   <label for="id">ID</label>
                 </div>
               </div>
@@ -52,8 +52,8 @@
             <div class="form-row">
               <div class="col-md-10">
                 <div class="form-label-group">
-                   <input type="password" id="password" class="form-control" placeholder="PASSWORD" required="required">
-             	   <label for="password">PASSWORD</label>
+                   <input type="password" id="password" name="password" class="form-control" placeholder="PASSWORD" required="required">
+             	   <label for="password">비밀번호</label>
                 </div>
               </div>
               <div class="col-md-2">
@@ -66,8 +66,8 @@
             <div class="form-row">
               <div class="col-md-10">
                 <div class="form-label-group">
-                   <input type="text" id="name" class="form-control" placeholder="NAME" required="required">
-             	   <label for="name">NAME</label>
+                   <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="PASSWORD" required="required">
+             	   <label for="confirmPassword">비밀번호 확인</label>
                 </div>
               </div>
               <div class="col-md-2">
@@ -77,38 +77,108 @@
             </div>
           </div>
           <div class="form-group">
-            <div class="form-label-group">
-              <input type="radio" id="gender" class="form-control" placeholder="gender" required="required">
-              <label for="inputEmail">Email address</label>
+            <div class="form-row">
+              <div class="col-md-10">
+                <div class="form-label-group">
+                   <input type="text" id="name" name="name" class="form-control" placeholder="NAME" required="required">
+             	   <label for="name">이름</label>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-label-group">
+                </div>
+              </div>
             </div>
-          </div>      
+          </div>
           <div class="form-group">
-            <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
-              <label for="inputEmail">Email address</label>
+          <div class="form-row">
+          	<div class="col-md-2">
+           	 <div class="form-label-group">
+              	<input type="radio" id="gender-man" name="gender" class="form-control" value="M" checked>
+             	 <label for="gender-man">남성</label>
             </div>
+            </div>
+            <div class="col-md-2">
+           	 <div class="form-label-group">
+           		<input type="radio" id="gender-girl" name="gender" class="form-control" value="W">
+             	 <label for="gender-girl">여성</label>
+             	 </div>
+             	 </div>
+           </div>
           </div>
           <div class="form-group">
             <div class="form-row">
-              <div class="col-md-6">
+              <div class="col-md-10">
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-                  <label for="inputPassword">Password</label>
+                   <input type="text" id="zipcode" name="zipcode" class="form-control" placeholder="" required="required">
+             	   <label for="name">우편번호</label>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-2">
                 <div class="form-label-group">
-                  <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required="required">
-                  <label for="confirmPassword">Confirm password</label>
                 </div>
               </div>
             </div>
-          </div>
+          </div>     
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-5">
+                <div class="form-label-group">
+                   <input type="text" id="address" name="address" class="form-control" placeholder="" required="required">
+             	   <label for="address">주소</label>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-label-group">
+                   <input type="text" id="address_detail" name="address_detail" class="form-control" placeholder="" required="required">
+             	   <label for="address_detail">상세주소</label>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-label-group">
+                </div>
+              </div>
+            </div>
+          </div> 
+         <div class="form-group">
+            <div class="form-row">
+               <div class="col-md-5">
+                <div class="form-label-group">
+                   <input type="text" id="home_number" name="home_number" class="form-control" placeholder="" required="required">
+             	   <label for="home_number">집전화</label>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-label-group">
+                   <input type="text" id="phone" name="phone" class="form-control" placeholder="" required="required">
+             	   <label for="phone">핸드폰번호</label>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-label-group">
+                </div>
+              </div>
+            </div>
+          </div> 
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-10">
+                <div class="form-label-group">
+                   <input type="text" id=email name="email" class="form-control" placeholder="" required="required">
+             	   <label for="email">이메일</label>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="form-label-group">
+                </div>
+              </div>
+            </div>
+          </div> 
           <a class="btn btn-primary btn-block" href="login.html">Register</a>
         </form>
         <div class="text-center">
-          <a class="d-block small mt-3" href="login.html">Login Page</a>
-          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+          <a class="d-block small mt-3" href="${pageContext.servletContext.contextPath }/user/login">로그인 화면</a>
+          <a class="d-block small mt-3" href="${pageContext.servletContext.contextPath }/">취소</a>
         </div>
       </div>
     </div>

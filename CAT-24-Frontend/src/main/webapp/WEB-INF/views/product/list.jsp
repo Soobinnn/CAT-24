@@ -13,73 +13,61 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Modern Business - Start Bootstrap Template</title>
+  <title>Cat 24 - Product</title>
 
   <!-- Bootstrap core CSS -->
   <link href="${pageContext.servletContext.contextPath }/assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="${pageContext.servletContext.contextPath }/assets/css/modern-business.css" rel="stylesheet">
-
+  <link href="${pageContext.servletContext.contextPath }/assets/css/main.css" rel="stylesheet">
 </head>
 
 <body>
 
   <!-- Navigation -->
     <c:import url="/WEB-INF/views/includes/main_nav.jsp"/>
-
-  <!-- Page Content -->
+ 
+   <!-- Page Content -->
   <div class="container">
-
+      
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Portfolio 2
-      <small>Subheading</small>
+    <h1 class="mt-4 mb-3">
     </h1>
+    <div style="margin-top:100px;">
+    </div>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html">상품</a>
+        <a href="index.html">Home</a>
       </li>
       <li class="breadcrumb-item active">Portfolio 2</li>
     </ol>
 
     <div class="row">
-          <!-- Sidebar Column -->
-      <div class="col-lg-3 mb-4">
+    
+      <div class="col-lg-3">
+        <h1 class="my-4">Shop Name</h1>
         <div class="list-group">
-          <a href="index.html" class="list-group-item">Home</a>
-          <a href="about.html" class="list-group-item">About</a>
-          <a href="services.html" class="list-group-item">Services</a>
-          <a href="contact.html" class="list-group-item">Contact</a>
-          <a href="portfolio-1-col.html" class="list-group-item">1 Column Portfolio</a>
-          <a href="portfolio-2-col.html" class="list-group-item">2 Column Portfolio</a>
-          <a href="portfolio-3-col.html" class="list-group-item">3 Column Portfolio</a>
-          <a href="portfolio-4-col.html" class="list-group-item">4 Column Portfolio</a>
-          <a href="portfolio-item.html" class="list-group-item">Single Portfolio Item</a>
-          <a href="blog-home-1.html" class="list-group-item">Blog Home 1</a>
-          <a href="blog-home-2.html" class="list-group-item">Blog Home 2</a>
-          <a href="blog-post.html" class="list-group-item">Blog Post</a>
-          <a href="full-width.html" class="list-group-item">Full Width Page</a>
-          <a href="sidebar.html" class="list-group-item active">Sidebar Page</a>
-          <a href="faq.html" class="list-group-item">FAQ</a>
-          <a href="404.html" class="list-group-item">404</a>
-          <a href="pricing.html" class="list-group-item">Pricing Table</a>
+          <a href="#" class="list-group-item">Category 1</a>
+          <a href="#" class="list-group-item">Category 2</a>
+          <a href="#" class="list-group-item">Category 3</a>
         </div>
       </div>
-      <!-- Content Column -->
-      <div class="col-lg-9 mb-4">
-        <h2>Section Heading</h2>
-             <div class="col-lg-6 portfolio-item">
-        		<div class="card h-100">
-          		<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          			<div class="card-body">
-           			 <h4 class="card-title">
-            			  <a href="#">Project One</a>
-            		</h4>
-            		<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          			</div>
-        		</div>
-     		 </div>
+      
+      <div class="col-lg-9">
+       <div class="row">
+      <div class="col-lg-6 portfolio-item">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+          </div>
+        </div>
+      </div>
       <div class="col-lg-6 portfolio-item">
         <div class="card h-100">
           <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
@@ -134,12 +122,13 @@
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
           </div>
         </div>
+      </div>    
       </div>
-    </div>
-    <!-- /.row -->
-
-    <!-- Pagination -->
-    <ul class="pagination justify-content-center">
+     
+     <div style="margin-top:30px;">
+     </div>
+        <!-- Pagination -->
+    <ul class="pagination" style="padding-left:330px;">
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
@@ -161,11 +150,15 @@
           <span class="sr-only">Next</span>
         </a>
       </li>
-    </ul>
-        
-        </div>
+    </ul>  
     </div>
+        
+    
+    <!-- /.row -->
+	</div>
+
   </div>
+  
   <!-- /.container -->
 
   <!-- Footer -->
@@ -181,5 +174,4 @@
   <script src="${pageContext.servletContext.contextPath }/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>

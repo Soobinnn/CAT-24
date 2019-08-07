@@ -12,20 +12,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="${pageContext.servletContext.contextPath }/product/list" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              상품
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="portfolio-1-col.html">카테고리1</a>
-              <a class="dropdown-item" href="portfolio-2-col.html">카테고리2</a>
-              <a class="dropdown-item" href="portfolio-3-col.html">카테고리3</a>
-              <a class="dropdown-item" href="portfolio-4-col.html">카테고리4</a>
-              <a class="dropdown-item" href="portfolio-item.html">카테고리5</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="${pageContext.servletContext.contextPath}/product/list">상품</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="services.html">장바구니</a>
+            <a class="nav-link" href="${pageContext.servletContext.contextPath}/cart/">장바구니</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="${pageContext.servletContext.contextPath}/user/login">로그인</a>
