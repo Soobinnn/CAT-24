@@ -10,6 +10,8 @@ import javax.validation.Valid;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -38,6 +40,9 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("api/v1/users")
 public class UsersController 
 {
+	static final Logger logger = LoggerFactory.getLogger(UsersController.class);
+	
+	
 	@Autowired
 	private MessageSource messageSource;
 	
@@ -53,6 +58,8 @@ public class UsersController
 	@PostMapping(value="/")
 	public ResponseEntity<JSONResult> join(@RequestBody @Valid UsersVo usersVo, BindingResult result) 
 	{
+		logger.info("backend"+usersVo);
+		
 		usersService.join(usersVo);
 		
 		if( result.hasErrors() ) 
