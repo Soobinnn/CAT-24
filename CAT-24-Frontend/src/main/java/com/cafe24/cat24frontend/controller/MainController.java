@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class mainController 
+public class MainController 
 {
 	/** 메인 페이지 **/
 	@RequestMapping("/")
