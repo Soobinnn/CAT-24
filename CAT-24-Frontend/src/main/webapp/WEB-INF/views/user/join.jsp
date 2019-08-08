@@ -22,6 +22,13 @@
   <!-- Custom styles for this template-->
   <link href="${pageContext.servletContext.contextPath }/assets/css/sb-admin.css" rel="stylesheet">
   <link href="${pageContext.servletContext.contextPath }/assets/css/main.css" rel="stylesheet">
+<script>
+ function joinRegister()
+ {
+	 var form = document.getElementById("form1");
+	form.submit();
+ }
+</script>
 </head>
 
 <body class="bg-dark">
@@ -33,7 +40,7 @@
     <div class="card card-register mx-auto mt-5">
       <div class="card-header">Register an Account</div>
       <div class="card-body">
-        <form>
+        <form id="form1" action="${pageContext.servletContext.contextPath }/user/join" method="post">
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-10">
@@ -174,7 +181,7 @@
               </div>
             </div>
           </div> 
-          <a class="btn btn-primary btn-block" href="login.html">Register</a>
+          <a class="btn btn-primary btn-block" href="#" onClick="joinRegister()">Register</a>
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="${pageContext.servletContext.contextPath }/user/login">로그인 화면</a>

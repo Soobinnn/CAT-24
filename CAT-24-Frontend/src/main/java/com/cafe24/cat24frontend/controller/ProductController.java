@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.cafe24.cat24frontend.service.CategoriesService;
@@ -39,9 +40,13 @@ public class ProductController
 		return "product/list";
 	}
 	/** 해당 상품 보기 **/
-	@RequestMapping("/test")
-	public String list()
+	@RequestMapping("/list/{product_no}")
+	public String get( @PathVariable( "product_no" ) Long product_no )
 	{
+		ProductsVo get = productsService.get(product_no);
+		
+		System.out.println("test");
+		System.out.println(get);
 		return "product/detail";
 	}
 }

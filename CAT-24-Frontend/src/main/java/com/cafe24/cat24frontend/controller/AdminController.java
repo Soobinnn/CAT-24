@@ -97,7 +97,7 @@ public class AdminController
 		
 		adminService.productRegister(productvo);
 		
-		return "admin/productList";
+		return "redirect:/admin/productlist";
 	}
 
 }

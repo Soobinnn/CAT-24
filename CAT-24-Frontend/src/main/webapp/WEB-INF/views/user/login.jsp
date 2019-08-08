@@ -22,7 +22,13 @@
   <!-- Custom styles for this template-->
   <link href="${pageContext.servletContext.contextPath }/assets/css/sb-admin.css" rel="stylesheet">
   <link href="${pageContext.servletContext.contextPath }/assets/css/main.css" rel="stylesheet">
-  
+  <script>
+ function login()
+ {
+	 	var form = document.getElementById("form1");
+		form.submit();
+ }
+</script>
 </head>
 
 <body >
@@ -33,17 +39,17 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">Login</div>
       <div class="card-body">
-        <form>
+        <form  id="form1" action="${pageContext.servletContext.contextPath }/user/login" method="post">
           <div class="form-group">
             <div class="form-label-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="ID" required="required" autofocus="autofocus">
-              <label for="inputEmail">ID</label>
+              <input type="text" id="id" name="id"class="form-control" placeholder="ID" required="required" autofocus="autofocus">
+              <label for="id">ID</label>
             </div>
           </div>
           <div class="form-group">
             <div class="form-label-group">
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-              <label for="inputPassword">Password</label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required">
+              <label for="password">Password</label>
             </div>
           </div>
           <div class="form-group">
@@ -54,11 +60,10 @@
               </label>
             </div>
           </div>
-          <a class="btn btn-primary btn-block" href="index.html">Login</a>
+          <a class="btn btn-primary btn-block" href="#" onClick="login()">Login</a>
         </form>
         <div class="text-center">
           <a class="d-block small mt-3" href="${pageContext.servletContext.contextPath}/user/join">회원가입</a>
-          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
         </div>
       </div>
     </div>

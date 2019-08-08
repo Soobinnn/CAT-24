@@ -33,4 +33,27 @@ public class ProductsServiceImpl implements ProductsService
 		
 		return list;
 	}
+	
+	/** 해당 상품 보기 **/
+	public ProductsVo get(Long product_no)
+	{
+		RestTemplate restTemplate = new RestTemplate();
+		
+		String url = "http://localhost:8080/CAT-24-Backend/api/v1/admin/products/" +product_no;
+		ResponseEntity<JSONResponse> result 
+			= restTemplate.getForEntity(url, JSONResponse.class);
+		
+		System.out.println(result.getBody().getData());
+		System.out.println(result.getBody().getResult());
+		
+		Object get  = result.getBody().getData();
+		
+		
+		System.out.println("---------------------------------");
+		System.out.println(get.toString());
+		logger.info(result.toString());
+		logger.info(result.getBody().getResult());
+		
+		return (ProductsVo) get;
+	}
 }
