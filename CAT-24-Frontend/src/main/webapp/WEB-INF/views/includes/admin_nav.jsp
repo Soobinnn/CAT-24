@@ -5,7 +5,7 @@
     pageEncoding="UTF-8"%>
 
 <nav id="nav-title" class="navbar navbar-expand navbar-dark bg-coral static-top">
-    <a class="navbar-brand mr-1" href="index.html">Cat 24 - ADMIN</a>
+    <a class="navbar-brand mr-1" href="${pageContext.servletContext.contextPath }/admin/">Cat 24 - ADMIN</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
