@@ -38,6 +38,8 @@ public class ProductsVo
 	/** 카테고리분류 **/
 	private long category_no;
 	
+	
+	
 	public long getProduct_no() {
 		return product_no;
 	}

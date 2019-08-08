@@ -11,13 +11,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cafe24.cat24frontend.dto.JSONResult;
 import com.cafe24.cat24frontend.service.AdminService;
 import com.cafe24.cat24frontend.vo.AdminVo;
 import com.cafe24.cat24frontend.vo.ProductsVo;
 import com.cafe24.cat24frontend.vo.UsersVo;
+import com.cafe24.cat24frontend.service.FileuploadService;
 
 @Controller
 @RequestMapping("/admin")
@@ -27,6 +30,9 @@ public class AdminController
 	
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private FileuploadService fileuploadService;
 	
 	/** 관리자 페이지**/
 	@RequestMapping("/")
@@ -74,10 +80,24 @@ public class AdminController
 	}
 	
 	/** 관리자 상품등록 페이지 **/
-	@RequestMapping("/productregister")
+	@GetMapping("/productregister")
 	public String productRegister()
 	{
 		return "admin/productRegister";
+	}
+	
+	/** 관리자 상품등록  **/
+	@PostMapping("/productregister")
+	public String productRegister(@ModelAttribute ProductsVo productvo, 
+			@RequestParam(value="productimg") MultipartFile multipartFile,
+			Model model)
+	{
+		String url = fileuploadService.restore( multipartFile );
+		productvo.setProduct_image(url);
+		
+		adminService.productRegister(productvo);
+		
+		return "admin/productList";
 	}
 
 }

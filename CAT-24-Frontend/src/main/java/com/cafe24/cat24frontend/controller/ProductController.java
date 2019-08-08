@@ -38,4 +38,10 @@ public class ProductController
 		
 		return "product/list";
 	}
+	/** 해당 상품 보기 **/
+	@RequestMapping("/test")
+	public String list()
+	{
+		return "product/detail";
+	}
 }

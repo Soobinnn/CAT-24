@@ -75,4 +75,24 @@ public class AdminServiceImpl implements AdminService
 		
 		return list;
 	}
+	
+	/** 관리자 상품등록 **/
+	public Boolean productRegister(ProductsVo productvo)
+	{
+		RestTemplate restTemplate = new RestTemplate();
+		
+		ResponseEntity<JSONResponse> result 
+			= restTemplate.postForEntity("http://localhost:8080/CAT-24-Backend/api/v1/admin/products/", productvo, JSONResponse.class);
+		
+		System.out.println("---------------------------------");
+		System.out.println(result);
+
+		logger.info(result.toString());
+		logger.info(result.getBody().getResult());
+		//		logger.info(result.getBody().getMessage());
+		//		logger.info(result.getBody().getData().toString());
+		
+		return true;
+	}
+
 }

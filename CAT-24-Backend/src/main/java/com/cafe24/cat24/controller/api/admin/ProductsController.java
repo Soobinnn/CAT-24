@@ -36,6 +36,7 @@ public class ProductsController
 	@Autowired
 	private ProductsService productsService;
 
+	
 	/** 상품 전체 목록 **/
 	@ApiOperation(value="상품 전체 목록")
 	@GetMapping(value="/")

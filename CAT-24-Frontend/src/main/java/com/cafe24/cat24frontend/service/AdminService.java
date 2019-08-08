@@ -18,4 +18,7 @@ public interface AdminService
 	
 	/** 관리자 상품목록**/
 	public List<ProductsVo> productlist();
+	
+	/** 관리자 상품등록 **/
+	public Boolean productRegister(ProductsVo productvo);
 }

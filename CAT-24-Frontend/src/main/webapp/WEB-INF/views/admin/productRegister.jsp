@@ -24,6 +24,14 @@
 
   <!-- Custom styles for this template-->
   <link href="${pageContext.servletContext.contextPath }/assets/css/sb-admin.css" rel="stylesheet">
+
+	<script>
+		 function productRegister()
+		 {
+				 var form = document.getElementById("form2");
+				form.submit();
+		 }
+	</script>
 </head>
 
 <body id="page-top">
@@ -48,7 +56,7 @@
           <li class="breadcrumb-item active">Tables</li>
         </ol>
 
-        <form id="form1" action="${pageContext.servletContext.contextPath }/user/join" method="post">
+        <form id="form2" action="${pageContext.servletContext.contextPath}/admin/productregister" method="post"  enctype="multipart/form-data">
         <div class="card card-register mx-auto mt-5 ">
     			<div class="card-header bg-dark text-white ">기본정보</div>
      	 			<div class="card-body">
@@ -116,7 +124,7 @@
               					<div class="col-md-10">
                 					<div class="form-label-group">
                    						<input type="text" id="summary" name="summary" class="form-control" required="required">
-             	   						<label for="summary">비밀번호</label>
+             	   						<label for="summary">요약설명</label>
                 					</div>
               					</div>
             				</div>
@@ -185,8 +193,8 @@
       	        </div>
        	       <div class="col-md-10">
        	         <div class="form-label-group">
-       	           <input type="text" id="id" name="id" class="form-control" placeholder="ID" required="required" autofocus="autofocus">
-       	           <label for="id">판매중여부</label>
+       	           <input type="text" id="sell_yn" name="sell_yn" class="form-control"  required="required" autofocus="autofocus">
+       	           <label for="sell_yn">표시 상태</label>
        	         </div>
        	       </div>
        	     </div>
@@ -201,8 +209,8 @@
       	        </div>
        	       <div class="col-md-10">
        	         <div class="form-label-group">
-       	           <input type="text" id="id" name="id" class="form-control" placeholder="ID" required="required" autofocus="autofocus">
-       	           <label for="id">판매중여부</label>
+       	           <input type="text" id="discount_yn" name="discount_yn" class="form-control" required="required" autofocus="autofocus">
+       	           <label for="discount_yn">할인 여부</label>
        	         </div>
        	       </div>
        	     </div>
@@ -238,8 +246,8 @@
       	        </div>
        	       <div class="col-md-10">
        	         <div class="form-label-group">
-       	           <input type="text" id="product_image" name="product_image" class="form-control" required="required" autofocus="autofocus">
-       	           <label for="product_image">상품이미지</label>
+       	           		<input type="file" name="productimg">
+       	           		<label for="product-file">상품 이미지</label>
        	         </div>
        	       </div>
        	     </div>
@@ -254,19 +262,15 @@
        	       <div class="col-md-10">
        	         <div class="form-label-group">
        	           <input type="text" id="product_subimage" name="product_subimage" class="form-control"  required="required" autofocus="autofocus">
-       	           <label for="product_subimage">추가이미지</label>
+       	           <label for="product_subimage"></label>
        	         </div>
        	       </div>
        	     </div>
        	   </div>
           </div> 
+          <a class="btn btn-primary btn-block" href="#" onClick="productRegister()">Register</a>
           </div>
-          
-          <a class="btn btn-primary btn-block" href="#" onClick="joinRegister()">Register</a>
-        <div class="text-center">
-          <a class="d-block small mt-3" href="${pageContext.servletContext.contextPath }/user/login">로그인 화면</a>
-          <a class="d-block small mt-3" href="${pageContext.servletContext.contextPath }/">취소</a>
-        </div>
+         
    
         </form>
 
