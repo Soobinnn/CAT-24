@@ -1,6 +1,7 @@
 package com.cafe24.cat24.repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -15,6 +16,13 @@ public class UsersDao
 {
 	@Autowired
 	private SqlSession sqlSession;
+	
+	/** 회원 전체목록 **/
+	public List<UsersVo> list() 
+	{
+		List<UsersVo> list = sqlSession.selectList("users.list");
+		return list;
+	}
 	
 	/** 회원가입 **/
 	public Boolean join(UsersVo usersvo) 

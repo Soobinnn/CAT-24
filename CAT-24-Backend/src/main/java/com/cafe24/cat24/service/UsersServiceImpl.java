@@ -1,5 +1,7 @@
 package com.cafe24.cat24.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,12 @@ public class UsersServiceImpl implements UsersService
 {
 	@Autowired
 	private UsersDao usersDao;
+	
+	/** 회원 전체 목록 **/
+	public List<UsersVo> list()
+	{
+		return usersDao.list();
+	}
 	
 	/** 회원가입 **/
 	public Boolean join(UsersVo usersVo)

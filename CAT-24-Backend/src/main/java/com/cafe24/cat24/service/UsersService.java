@@ -1,9 +1,15 @@
 package com.cafe24.cat24.service;
 
+import java.util.List;
+
+import com.cafe24.cat24.vo.ProductsVo;
 import com.cafe24.cat24.vo.UsersVo;
 
 public interface UsersService 
 {
+	/** 회원 전체 목록 **/
+	public List<UsersVo> list();
+	
 	/** 회원가입 **/
 	public Boolean join(UsersVo usersVo);
 	

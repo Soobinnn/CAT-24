@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cafe24.cat24.dto.JSONResult;
 import com.cafe24.cat24.service.UsersService;
 import com.cafe24.cat24.vo.CategoriesVo;
+import com.cafe24.cat24.vo.ProductsVo;
 import com.cafe24.cat24.vo.UsersVo;
 
 import io.swagger.annotations.ApiImplicitParam;
@@ -49,6 +50,25 @@ public class UsersController
 	@Autowired
 	private UsersService usersService;
 	
+	
+	/** 회원 전체 목록 **/
+	@ApiOperation(value="회원 전체 목록")
+	@GetMapping(value="/")
+	public ResponseEntity<JSONResult> list() 
+	{
+		List<UsersVo> list = usersService.list();
+		
+		// 상품이 아무것도 없을 경우
+		if(list == null)
+		{
+			String message = messageSource.getMessage("NotEmpty.UsersVo", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(list));
+
+	}
 	
 	/** 회원 등록 **/
 	@ApiOperation(value="회원 등록")
