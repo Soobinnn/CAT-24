@@ -11,6 +11,7 @@
 				AES_DECRYPT(home_number, HEX(SHA2("enc_key",512))) as home_number,
 				AES_DECRYPT(phone, HEX(SHA2("enc_key",512))) as phone,
 				AES_DECRYPT(email, HEX(SHA2("enc_key",512))) as email,
+				gender,
 				profile,
 				blackList,
 				blackList_date,
