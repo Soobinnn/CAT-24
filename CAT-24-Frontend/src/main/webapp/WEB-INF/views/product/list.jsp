@@ -39,92 +39,38 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
+        <a href="${pageContext.servletContext.contextPath }/">Home</a>
       </li>
-      <li class="breadcrumb-item active">Portfolio 2</li>
+      <li class="breadcrumb-item active">상품</li>
     </ol>
 
     <div class="row">
     
       <div class="col-lg-3">
-        <h1 class="my-4">Shop Name</h1>
+        <h1 class="my-4">Cat 24</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item">Category 1</a>
-          <a href="#" class="list-group-item">Category 2</a>
-          <a href="#" class="list-group-item">Category 3</a>
+           <c:forEach items = "${categorylist}" var="vo" varStatus="status">
+                  <a href="${pageContext.servletContext.contextPath }/${vo.category_no}/products" class="list-group-item">${vo.category_name}</a>
+            </c:forEach>
         </div>
       </div>
-      
       <div class="col-lg-9">
        <div class="row">
-      <div class="col-lg-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project One</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+      <c:forEach items = "${productlist}" var="vo" varStatus="status">
+      	<div class="col-lg-6 portfolio-item">
+        	<div class="card h-100">
+          		<a href="${pageContext.servletContext.contextPath }/api/v1/admin/products/${vo.product_no}"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          		<div class="card-body">
+            	<h4 class="card-title">
+              		<a href="api/v1/admin/products">${vo.product_name}</a>
+            	</h4>
+            	<p class="card-text">tttttttttttttt</p>
+            	<p class="card-text">${vo.summary}</p>
           </div>
         </div>
       </div>
-      <div class="col-lg-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Two</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
-          </div>
-        </div>
+      </c:forEach>
       </div>
-      <div class="col-lg-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Three</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Four</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Five</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Six</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit aliquam aperiam nulla perferendis dolor nobis numquam, rem expedita, aliquid optio, alias illum eaque. Non magni, voluptates quae, necessitatibus unde temporibus.</p>
-          </div>
-        </div>
-      </div>    
-      </div>
-     
      <div style="margin-top:30px;">
      </div>
         <!-- Pagination -->
