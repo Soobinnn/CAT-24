@@ -43,16 +43,16 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="#">회원 관리</a>
           </li>
-          <li class="breadcrumb-item active">Tables</li>
+          <li class="breadcrumb-item active">회원 목록</li>
         </ol>
 
         <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-            Data Table Example</div>
+            회원 목록</div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -68,12 +68,12 @@
                 </thead>
                 <tfoot>
                   <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>회원번호</th>
+                    <th>ID</th>
+                    <th>이름</th>
+                    <th>성별</th>
+                    <th>이메일</th>
+                    <th>블랙리스트여부</th>
                   </tr>
                 </tfoot>  
                 <tbody>

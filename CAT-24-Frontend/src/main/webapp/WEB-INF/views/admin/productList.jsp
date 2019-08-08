@@ -39,7 +39,65 @@
     <div id="content-wrapper">
 
       <div class="container-fluid">
-			
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="${pageContext.servletContext.contextPath }/admin/productlist">상품 관리 </a>
+          </li>
+          <li class="breadcrumb-item active">상품목록</li>
+        </ol>
+
+        <!-- DataTables Example -->
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            상품 목록 </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                     <th>상품코드</th>
+                    <th>자체상품분류</th>
+                    <th>상품명</th>
+                    <th>모델명</th>
+                    <th>판매가</th>
+                    <th>요약</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>상품코드</th>
+                    <th>자체상품분류</th>
+                    <th>상품명</th>
+                    <th>모델명</th>
+                    <th>판매가</th>
+                    <th>요약</th>
+                  </tr>
+                </tfoot>  
+                <tbody>
+                <c:forEach items = "${productlist}" var="vo" varStatus="status">
+                  <tr>
+                    <td>${vo.product_code}</td>
+                    <td>${vo.custom_product_code}</td>
+                    <td>${vo.product_name}</td>
+                    <td>${vo.model_name}</td>
+                    <td>${vo.selling_price}</td>
+                    <td>${vo.summary}</td>
+            	</tr>
+            	</c:forEach>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+        <p class="small text-center text-muted my-5">
+          <em>More table examples coming soon...</em>
+        </p>
+
       </div>
       <!-- /.container-fluid -->
 
