@@ -50,25 +50,7 @@ public class UsersController
 	@Autowired
 	private UsersService usersService;
 	
-	
-	/** 회원 전체 목록 **/
-	@ApiOperation(value="회원 전체 목록")
-	@GetMapping(value="/")
-	public ResponseEntity<JSONResult> list() 
-	{
-		List<UsersVo> list = usersService.list();
-		
-		// 상품이 아무것도 없을 경우
-		if(list == null)
-		{
-			String message = messageSource.getMessage("NotEmpty.UsersVo", null, LocaleContextHolder.getLocale());
-			JSONResult result = JSONResult.fail(message);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
-		}
-		
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(list));
 
-	}
 	
 	/** 회원 등록 **/
 	@ApiOperation(value="회원 등록")

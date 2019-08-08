@@ -4,7 +4,18 @@
 	
 		<select id="list" resultType="usersvo">
 		<![CDATA[
-			SELECT * FROM Member ORDER BY member_no DESC
+			SELECT member_no, id, AES_DECRYPT(name, HEX(SHA2("enc_key",512))) as name,
+				AES_DECRYPT(zipcode, HEX(SHA2("enc_key",512))) as zipcode,
+				AES_DECRYPT(address, HEX(SHA2("enc_key",512))) as address,
+				AES_DECRYPT(address_detail, HEX(SHA2("enc_key",512))) as address_detail,
+				AES_DECRYPT(home_number, HEX(SHA2("enc_key",512))) as home_number,
+				AES_DECRYPT(phone, HEX(SHA2("enc_key",512))) as phone,
+				AES_DECRYPT(email, HEX(SHA2("enc_key",512))) as email,
+				profile,
+				blackList,
+				blackList_date,
+				last_date
+			 FROM Member ORDER BY member_no DESC
 		]]>
 	</select>
 	
