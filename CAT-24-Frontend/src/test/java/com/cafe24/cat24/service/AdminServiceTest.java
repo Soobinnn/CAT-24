@@ -20,6 +20,7 @@ import com.cafe24.cat24frontend.config.AppConfig;
 import com.cafe24.cat24frontend.dto.JSONResult;
 import com.cafe24.cat24frontend.service.AdminService;
 import com.cafe24.cat24frontend.vo.AdminVo;
+import com.cafe24.cat24frontend.vo.ProductsVo;
 import com.cafe24.cat24frontend.vo.UsersVo;
 import com.cafe24.config.web.TestWebConfig;
 
@@ -63,6 +64,17 @@ public class AdminServiceTest
 		List<UsersVo> list = new ArrayList<UsersVo>();
 		
 		list=  adminService.memberlist();
+		
+		assertTrue(true);
+	}
+	
+	@Test
+	public void 관리자상품목록() throws Exception
+	{
+		
+		List<ProductsVo> list = new ArrayList<ProductsVo>();
+		
+		list=  adminService.productlist();
 		
 		assertTrue(true);
 	}

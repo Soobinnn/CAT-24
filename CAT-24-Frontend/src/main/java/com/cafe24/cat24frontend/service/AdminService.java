@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.cafe24.cat24frontend.dto.JSONResult;
 import com.cafe24.cat24frontend.vo.AdminVo;
+import com.cafe24.cat24frontend.vo.ProductsVo;
 import com.cafe24.cat24frontend.vo.UsersVo;
 
 public interface AdminService 
@@ -14,4 +15,7 @@ public interface AdminService
 	
 	/** 관리자 회원목록 **/
 	public List<UsersVo> memberlist();
+	
+	/** 관리자 상품목록**/
+	public List<ProductsVo> productlist();
 }

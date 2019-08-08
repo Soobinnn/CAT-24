@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.cafe24.cat24frontend.dto.JSONResult;
 import com.cafe24.cat24frontend.service.AdminService;
 import com.cafe24.cat24frontend.vo.AdminVo;
+import com.cafe24.cat24frontend.vo.ProductsVo;
 import com.cafe24.cat24frontend.vo.UsersVo;
 
 @Controller
@@ -53,7 +54,7 @@ public class AdminController
 	}
 	
 	/** 관리자 회원목록**/
-	@RequestMapping("/memberlist")
+	@GetMapping("/memberlist")
 	public String memberList(Model model)
 	{
 		List<UsersVo> memberlist = adminService.memberlist();
@@ -62,11 +63,13 @@ public class AdminController
 		return "admin/memberList";
 	}
 	
-	
 	/** 관리자 상품목록**/
-	@RequestMapping("/productlist")
-	public String productList()
+	@GetMapping("/productlist")
+	public String productList(Model model)
 	{
+		List<ProductsVo> productlist =  adminService.productlist();
+		
+		model.addAttribute("productlist", productlist);
 		return "admin/productList";
 	}
 	
