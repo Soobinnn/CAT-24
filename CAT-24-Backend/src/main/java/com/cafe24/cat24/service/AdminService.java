@@ -1,5 +1,10 @@
 package com.cafe24.cat24.service;
 
-public interface AdminService {
+import com.cafe24.cat24.vo.AdminVo;
 
+
+public interface AdminService 
+{
+	/** 관리자 로그인 **/
+	public AdminVo login(AdminVo adminVo);
 }

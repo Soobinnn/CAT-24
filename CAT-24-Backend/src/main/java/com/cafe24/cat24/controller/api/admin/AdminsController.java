@@ -1,11 +1,18 @@
 package com.cafe24.cat24.controller.api.admin;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
+import javax.validation.Validation;
+import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -28,30 +35,60 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("api/v1/admin/admins")
 public class AdminsController 
 {
-	/*@Autowired
+	@Autowired
 	private MessageSource messageSource;
 	
 	@Autowired
 	private AdminService adminService;
 	
-	*//** 관리자 로그인 **//*
+	/** 관리자 로그인 **/
+	@ApiOperation(value=" 관리자 로그인")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="adminVo", value="관리자 로그인", required=true, dataType="AdminVo", defaultValue="")
+	})
 	@PostMapping(value="/login")
-	public ResponseEntity<JSONResult> login(@RequestBody @Valid AdminVo AdminVo, BindingResult result)
+	public ResponseEntity<JSONResult> login(@RequestBody AdminVo adminVo) 
 	{
-		if( result.hasErrors() ) 
+		
+		Validator validator = 
+				Validation.buildDefaultValidatorFactory().getValidator();
+		
+		Set<ConstraintViolation<AdminVo>> validatorResults = 
+				validator.validateProperty(adminVo, "id");
+
+		if(validatorResults.isEmpty() == false) 
 		{
-			List<ObjectError> list = result.getAllErrors();
-			for(ObjectError error : list) 
+			for(ConstraintViolation<AdminVo> validatorResult : validatorResults) 
 			{
-				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(error.getDefaultMessage())); 
+				//String message = validatorResult.getMessage();
+				String message = messageSource.getMessage("NotEmpty.usersVo.id_password", null, LocaleContextHolder.getLocale());
+				JSONResult result = JSONResult.fail(message);
+				
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
 			}
 		}
 		
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(AdminVo));
+		AdminVo vo= adminService.login(adminVo);
+		
+		if(vo==null)
+		{
+			String message = messageSource.getMessage("Fail.usersVo.id_password", null, LocaleContextHolder.getLocale());
+			JSONResult result = JSONResult.fail(message);
+			
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
+		}
+		
+		Map<String, Object> info = new HashMap<String,Object>(); 
+		
+		info.put("id",adminVo.getId());
+		info.put("name", vo.getName());
+		info.put("used_YN",vo.getUsed_YN());
+		
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(info)); 
 	}
 	
 	
-	*//** 관리자 가입 **//*
+	/** 관리자 가입 **//*
 	@ApiOperation(value="회원가입")
 	@ApiImplicitParams({
 		@ApiImplicitParam(name="join", value="회원가입", required=true, dataType="string", defaultValue="")
