@@ -32,7 +32,6 @@ public class UserServiceImpl implements UserService
 //		logger.info(result.getBody().getMessage());
 //		logger.info(result.getBody().getData().toString());
 		
-		
 		 return true;
 	}
 	
@@ -42,10 +41,12 @@ public class UserServiceImpl implements UserService
 	
 		RestTemplate restTemplate = new RestTemplate();
 		
-		ResponseEntity<JSONResponse> result = restTemplate.postForEntity("http://localhost:8080/CAT-24-Backend/api/v1/users/login", userVo, JSONResponse.class);
+		ResponseEntity<JSONResponse> result 
+		= restTemplate.postForEntity("http://localhost:8080/CAT-24-Backend/api/v1/users/login", userVo, JSONResponse.class);
 		
 		System.out.println(result);
-
+		
+		
 		logger.info(result.toString());
 		logger.info(result.getBody().getResult());
 //		logger.info(result.getBody().getMessage());
@@ -54,4 +55,5 @@ public class UserServiceImpl implements UserService
 		
 		 return true;
 	}
+	
 }

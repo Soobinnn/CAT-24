@@ -2,6 +2,9 @@ package com.cafe24.cat24.service;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,8 +17,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.cafe24.cat24frontend.config.AppConfig;
+import com.cafe24.cat24frontend.dto.JSONResult;
 import com.cafe24.cat24frontend.service.AdminService;
 import com.cafe24.cat24frontend.vo.AdminVo;
+import com.cafe24.cat24frontend.vo.UsersVo;
 import com.cafe24.config.web.TestWebConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -49,5 +54,16 @@ public class AdminServiceTest
 		Boolean service = adminService.login(adminVo);
 		
 		assertTrue(service == true);
+	}
+	
+	@Test
+	public void 관리자회원목록() throws Exception
+	{
+		
+		List<UsersVo> list = new ArrayList<UsersVo>();
+		
+		list=  adminService.memberlist();
+		
+		assertTrue(true);
 	}
 }
