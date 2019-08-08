@@ -47,7 +47,6 @@ public class UserControllerTest
 	
 	
 	@Test
-	@Ignore
 	public void 회원가입테스트() throws Exception 
 	{
 		UsersVo usersVo = new UsersVo();
@@ -80,7 +79,7 @@ public class UserControllerTest
 		.andExpect(status().isOk());
 		
 		//2. 이름예외처리 테스트 : length must be between 2 and 8
-		usersVo.setId("isb908222");
+		/*usersVo.setId("isb908222");
 		usersVo.setPassword("dlatnqls1!test");
 		
 		usersVo.setName("수");
@@ -142,7 +141,7 @@ public class UserControllerTest
 		.andExpect(status().isBadRequest())
 		.andDo(print())
 		.andExpect(jsonPath("$.result", is("fail")));
-
+*/
 		//3. 성별 예외처리 테스트 : 
 		/*usersVo.setId("isb9082");
 		usersVo.setPassword("dlatnqls1!test");

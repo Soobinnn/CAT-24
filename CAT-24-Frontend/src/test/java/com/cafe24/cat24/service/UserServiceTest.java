@@ -51,7 +51,7 @@ public class UserServiceTest
 		UsersVo usersVo = new UsersVo();
 		
 		//1. 일반 회원가입 테스트
-		usersVo.setId("itest222");
+		usersVo.setId("bin0918");
 		usersVo.setPassword("dlatnqls1!test");
 		usersVo.setName("soobin");
 		usersVo.setGender("M");
@@ -68,6 +68,27 @@ public class UserServiceTest
 		usersVo.setUpdate_id("isb9082");
 		
 		Boolean service = userService.join(usersVo);
+		
+		assertTrue(service == true);
+		
+		//1. 예외처리
+		usersVo.setId("test");
+		usersVo.setPassword("dt");
+		usersVo.setName("soobin");
+		usersVo.setGender("M");
+		usersVo.setZipcode("0000-0000");
+		usersVo.setAddress("서울특별시 서초구");
+		usersVo.setAddress_detail("반포동");
+		usersVo.setHome_number("02-587-9082");
+		usersVo.setPhone("010-3449-0918");
+		usersVo.setEmail("isb9082@gmail.com");
+		usersVo.setProfile("profile.jpg");
+		usersVo.setBlacklist("N");
+		usersVo.setLast_date("2019-07-31");
+		usersVo.setUsed_YN("N");
+		usersVo.setUpdate_id("isb9082");
+		
+		service = userService.join(usersVo);
 		
 		assertTrue(service == true);
 	}
