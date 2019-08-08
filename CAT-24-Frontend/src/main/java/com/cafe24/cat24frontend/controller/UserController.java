@@ -50,6 +50,10 @@ public class UserController
 	@PostMapping("/login")
 	public String login(@ModelAttribute UsersVo userVo)
 	{
+		logger.info(userVo.toString());
+		
+		userService.login(userVo);
+		
 		return "main/index";
 	}
 }

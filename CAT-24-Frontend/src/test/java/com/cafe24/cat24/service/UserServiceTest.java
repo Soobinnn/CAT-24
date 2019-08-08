@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,12 +47,13 @@ public class UserServiceTest
 	private UserService userService;
 	
 	@Test
+	@Ignore
 	public void 회원가입서비스테스트() throws Exception 
 	{
 		UsersVo usersVo = new UsersVo();
 		
 		//1. 일반 회원가입 테스트
-		usersVo.setId("bin0918");
+		usersVo.setId("sbin0918");
 		usersVo.setPassword("dlatnqls1!test");
 		usersVo.setName("soobin");
 		usersVo.setGender("M");
@@ -71,7 +73,7 @@ public class UserServiceTest
 		
 		assertTrue(service == true);
 		
-		//1. 예외처리
+		//2. 예외처리테스트
 		usersVo.setId("test");
 		usersVo.setPassword("dt");
 		usersVo.setName("soobin");
@@ -93,4 +95,16 @@ public class UserServiceTest
 		assertTrue(service == true);
 	}
 	
+	@Test
+	public void 회원로그인테스트() throws Exception
+	{
+		UsersVo usersVo = new UsersVo();
+		
+		usersVo.setId("sbin0918");
+		usersVo.setPassword("dlatnqls1!test");
+		
+		Boolean service = userService.login(usersVo);
+		
+		assertTrue(service == true);
+	}
 }

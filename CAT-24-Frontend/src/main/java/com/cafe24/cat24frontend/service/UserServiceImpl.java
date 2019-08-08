@@ -26,8 +26,26 @@ public class UserServiceImpl implements UserService
 		ResponseEntity<JSONResponse> result = restTemplate.postForEntity("http://localhost:8080/CAT-24-Backend/api/v1/users/", userVo, JSONResponse.class);
 		
 		System.out.println(result);
-		 
-		logger.info("test---------------------");
+
+		logger.info(result.toString());
+		logger.info(result.getBody().getResult());
+//		logger.info(result.getBody().getMessage());
+//		logger.info(result.getBody().getData().toString());
+		
+		
+		 return true;
+	}
+	
+	/** 로그인 **/
+	public Boolean login(UsersVo userVo)
+	{
+	
+		RestTemplate restTemplate = new RestTemplate();
+		
+		ResponseEntity<JSONResponse> result = restTemplate.postForEntity("http://localhost:8080/CAT-24-Backend/api/v1/users/login", userVo, JSONResponse.class);
+		
+		System.out.println(result);
+
 		logger.info(result.toString());
 		logger.info(result.getBody().getResult());
 //		logger.info(result.getBody().getMessage());
