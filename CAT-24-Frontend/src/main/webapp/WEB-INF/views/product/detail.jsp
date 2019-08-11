@@ -67,7 +67,7 @@
         	<tbody>
         		<tr>
         			<td>판매가</td>
-        			<td>${vo.selling_price}</td>
+        			<td>${fn:split(vo.selling_price,'.')[0]}원</td>
         		</tr>
         		 <tr>
         			<td>상품명</td>

@@ -17,7 +17,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cafe24.cat24frontend.dto.JSONResult;
 import com.cafe24.cat24frontend.service.AdminService;
+import com.cafe24.cat24frontend.service.CategoriesService;
 import com.cafe24.cat24frontend.vo.AdminVo;
+import com.cafe24.cat24frontend.vo.CategoriesVo;
 import com.cafe24.cat24frontend.vo.ProductsVo;
 import com.cafe24.cat24frontend.vo.UsersVo;
 import com.cafe24.cat24frontend.service.FileuploadService;
@@ -27,6 +29,10 @@ import com.cafe24.cat24frontend.service.FileuploadService;
 public class AdminController 
 {
 	static final Logger logger = LoggerFactory.getLogger(AdminController.class);
+	
+	@Autowired
+	private CategoriesService categoriesService;
+	
 	
 	@Autowired
 	private AdminService adminService;
@@ -81,8 +87,13 @@ public class AdminController
 	
 	/** 관리자 상품등록 페이지 **/
 	@GetMapping("/productregister")
-	public String productRegister()
+	public String productRegister(Model model)
 	{
+		// 카테고리 목록
+		List<CategoriesVo> categorylist = categoriesService.categorylist();
+				
+		model.addAttribute("categorylist", categorylist);
+		
 		return "admin/productRegister";
 	}
 	

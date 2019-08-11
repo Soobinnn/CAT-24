@@ -51,9 +51,9 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="#">상품 관리</a>
           </li>
-          <li class="breadcrumb-item active">Tables</li>
+          <li class="breadcrumb-item active">상품 등록</li>
         </ol>
 
         <form id="form2" action="${pageContext.servletContext.contextPath}/admin/productregister" method="post"  enctype="multipart/form-data">
@@ -220,13 +220,17 @@
       	      <div class="form-row">
        	       <div class="col-md-2">
        	         <div class="form-label-group">
-       	         	상품 분류 선택
+       	         	상품 분류
        	         </div>
       	        </div>
 			    <div class="col-md-10">
-       	         <div class="form-label-group">
-       	           <input type="text" id="category_no" name="category_no" class="form-control" required="required" autofocus="autofocus">
-       	           <label for="category_no">카테고리</label>
+       	         <div class="form-label-group">          
+                  	<select id="category_no" name=category_no class="form-control">
+                  		<c:forEach items = "${categorylist}" var="vo" varStatus="status">
+                  		   <a href="${pageContext.servletContext.contextPath }/product/list/category/${vo.category_no}" class="list-group-item">${vo.category_name}</a>
+            			   <option value="${vo.category_no}">${vo.category_name}</option>
+            			</c:forEach>
+                  	</select>
        	         </div>
        	       </div>
        	     </div>

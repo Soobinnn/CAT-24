@@ -83,7 +83,7 @@
                     <td>${vo.custom_product_code}</td>
                     <td>${vo.product_name}</td>
                     <td>${vo.model_name}</td>
-                    <td>${vo.selling_price}</td>
+                    <td>${fn:split(vo.selling_price,'.')[0]}</td>
                     <td>${vo.summary}</td>
             	</tr>
             	</c:forEach>

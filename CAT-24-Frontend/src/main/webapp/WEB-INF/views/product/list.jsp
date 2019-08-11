@@ -64,7 +64,7 @@
             	<h4 class="card-title">
               		<a href="${pageContext.servletContext.contextPath }/product/list/${vo.product_no}">${vo.product_name}</a>
             	</h4>
-            	<p class="card-text">tttttttttttttt</p>
+            	<p class="card-text">${fn:split(vo.selling_price,'.')[0]}원</p>
             	<p class="card-text">${vo.summary}</p>
           </div>
         </div>
