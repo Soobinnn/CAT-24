@@ -44,15 +44,39 @@ public class ProductController
 	@RequestMapping("/list/{product_no}")
 	public String get( @PathVariable( "product_no" ) Long product_no, Model model )
 	{
+		// 해당 상품 목록
 		List<ProductsVo> get = productsService.get(product_no);
+		
+		// 카테고리 목록
+		List<CategoriesVo> categorylist = categoriesService.categorylist();
 		
 		System.out.println("test");
 		System.out.println(get);
 		
 		model.addAttribute("get",get);
 		
+		model.addAttribute("categorylist", categorylist);
+		
 		return "product/detail";
 	}
+	
+	/** 해당 카테고리 상품 조회 **/
+	@RequestMapping("/list/category/{category_no}")
+	public String product(@PathVariable("category_no") Long category_no, Model model)
+	{
+		// 카테고리 목록
+		List<CategoriesVo> categorylist = categoriesService.categorylist();
+			
+		// 해당 상품 목록
+		List<ProductsVo> productlist =  categoriesService.product(category_no);
+		
+		model.addAttribute("categorylist", categorylist);
+		
+		model.addAttribute("productlist", productlist);
+		
+		return "product/list";
+	}
+	
 
 
 }

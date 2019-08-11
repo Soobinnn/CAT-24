@@ -49,9 +49,9 @@
       <div class="col-lg-3">
         <h1 class="my-4">Cat 24</h1>
         <div class="list-group">
-        	<a href="${pageContext.servletContext.contextPath }/${vo.category_no}/products" class="list-group-item">Category1</a>
-        	<a href="${pageContext.servletContext.contextPath }/${vo.category_no}/products" class="list-group-item">Category2</a>
-        	<a href="${pageContext.servletContext.contextPath }/${vo.category_no}/products" class="list-group-item">Category3</a>
+       	  <c:forEach items = "${categorylist}" var="vo" varStatus="status">
+             <a href="${pageContext.servletContext.contextPath }/product/list/category/${vo.category_no}" class="list-group-item">${vo.category_name}</a>
+          </c:forEach>	
         </div>
       </div>
       <div class="col-lg-9">

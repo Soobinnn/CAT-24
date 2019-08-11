@@ -50,7 +50,7 @@
         <h1 class="my-4">Cat 24</h1>
         <div class="list-group">
            <c:forEach items = "${categorylist}" var="vo" varStatus="status">
-                  <a href="${pageContext.servletContext.contextPath }/${vo.category_no}/products" class="list-group-item">${vo.category_name}</a>
+                  <a href="${pageContext.servletContext.contextPath }/product/list/category/${vo.category_no}" class="list-group-item">${vo.category_name}</a>
             </c:forEach>
         </div>
       </div>
