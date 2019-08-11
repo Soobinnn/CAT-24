@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.cafe24.cat24.vo.CategoriesVo;
+import com.cafe24.cat24.vo.ProductsVo;
 
 @Repository
 public class CategoriesDao 
@@ -54,5 +55,9 @@ public class CategoriesDao
 		return update == 1;
 	}
 	
-	
+	/** 해당 카테고리 상품 조회 **/
+	public List<ProductsVo> product(Long category_no)
+	{
+		return sqlSession.selectList("categories.product",category_no);
+	}
 }

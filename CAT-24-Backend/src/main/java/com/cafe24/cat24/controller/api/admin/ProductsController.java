@@ -127,7 +127,7 @@ public class ProductsController
 	@ApiOperation(value="상품수정")
 	@ApiImplicitParams({
 		@ApiImplicitParam(name="product_no", value="상품번호", required=true, dataType="long", defaultValue=""),
-		@ApiImplicitParam(name="productsVo", value="상품t수정",  required=true, dataType="ProductsVo", defaultValue="")
+		@ApiImplicitParam(name="productsVo", value="상품수정",  required=true, dataType="ProductsVo", defaultValue="")
 	})
 	@PutMapping(value="/{product_no}")
 	public ResponseEntity<JSONResult> update(@RequestBody ProductsVo productvo, @PathVariable(value="product_no") Long product_no)

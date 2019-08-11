@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cafe24.cat24.dto.JSONResult;
 import com.cafe24.cat24.service.CategoriesService;
 import com.cafe24.cat24.vo.CategoriesVo;
+import com.cafe24.cat24.vo.ProductsVo;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -82,14 +83,15 @@ public class CategoriesController
 	})
 	@GetMapping(value="/{category_no}/products")
 	public ResponseEntity<JSONResult> product(@PathVariable(value="category_no") Long category_no)
-	{
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(null));
+	{	
+		List<ProductsVo> product = categoriesService.product(category_no);
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(product));
 	}
 	
 	/** 해당 카테고리 상품 갯수 **/
 	@ApiOperation(value="해당 카테고리 상품 갯수")
 	@ApiImplicitParams({
-		@ApiImplicitParam(name="category_no", value="해당 카테고리 조회", required=true, dataType="Long", defaultValue="")
+		@ApiImplicitParam(name="category_no", value="해당 카테고리 상품 갯수", required=true, dataType="Long", defaultValue="")
 	})
 	@GetMapping(value="/{category_no}/products/count")
 	public ResponseEntity<JSONResult> productcount(@RequestBody CategoriesVo categoriesVo, @PathVariable(value="category_no") Long category_no)

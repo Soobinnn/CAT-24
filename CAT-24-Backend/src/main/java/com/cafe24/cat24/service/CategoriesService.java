@@ -26,4 +26,10 @@ public interface CategoriesService
 	
 	/** 해당 카테고리 수정 **/
 	public Boolean update(CategoriesVo categoriesVo, int category_no);
+
+	/** 해당 카테고리 상품 조회 **/
+	public List<ProductsVo> product(Long category_no);
+	
+	
+	
 }

@@ -60,4 +60,11 @@ public class CategoriesServiceImpl implements CategoriesService
 		
 		return categoriesDao.update(categoriesVo);
 	}
+	
+	/** 해당 카테고리 상품 조회 **/
+	public List<ProductsVo> product(Long category_no)
+	{
+		return categoriesDao.product(category_no);
+	}
+	
 }

@@ -87,4 +87,10 @@
 		 WHERE category_no = #{category_no}      	 
 		]]>
 	</update>
+	<select id="product" resultType="productsvo">
+	<![CDATA[
+		SELECT * FROM Product
+		WHERE category_no = #{category_no} ORDER BY product_no DESC
+	]]>
+	</select>
 </mapper>
