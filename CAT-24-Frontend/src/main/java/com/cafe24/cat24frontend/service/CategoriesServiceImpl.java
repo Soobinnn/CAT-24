@@ -26,6 +26,7 @@ public class CategoriesServiceImpl implements CategoriesService
 		
 		List<CategoriesVo> list = (List<CategoriesVo>) result.getBody().getData();
 		
+		
 		System.out.println("---------------------------------");
 		System.out.println(list.toString());
 		logger.info(result.toString());

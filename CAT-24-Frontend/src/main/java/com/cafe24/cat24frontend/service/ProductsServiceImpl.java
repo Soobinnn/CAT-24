@@ -35,7 +35,7 @@ public class ProductsServiceImpl implements ProductsService
 	}
 	
 	/** 해당 상품 보기 **/
-	public ProductsVo get(Long product_no)
+	public List<ProductsVo> get(Long product_no)
 	{
 		RestTemplate restTemplate = new RestTemplate();
 		
@@ -46,14 +46,16 @@ public class ProductsServiceImpl implements ProductsService
 		System.out.println(result.getBody().getData());
 		System.out.println(result.getBody().getResult());
 		
-		Object get  = result.getBody().getData();
+		List<ProductsVo> gets = (List<ProductsVo>) result.getBody().getData();
 		
 		
+				
 		System.out.println("---------------------------------");
-		System.out.println(get.toString());
+		System.out.println(gets.toString());
 		logger.info(result.toString());
 		logger.info(result.getBody().getResult());
 		
-		return (ProductsVo) get;
+		
+		return gets;
 	}
 }

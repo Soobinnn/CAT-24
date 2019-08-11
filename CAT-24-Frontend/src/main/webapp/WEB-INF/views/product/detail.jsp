@@ -56,29 +56,30 @@
       </div>
       <div class="col-lg-9">
        <div class="row">
-            <div class="col-md-7">
-        <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+       <c:forEach items = "${get}" var="vo" varStatus="status">
+            <div class="col-md-6">
+        <img class="img-fluid" src="${pageContext.servletContext.contextPath }${vo.product_image}" alt="">
       </div>
 
-      <div class="col-md-5">
-       	<h3>tests</h3>
+      <div class="col-md-6">
+       	<h3>${vo.product_name}</h3>
         <table class="table">
         	<tbody>
         		<tr>
         			<td>판매가</td>
-        			<td>10000</td>
+        			<td>${vo.selling_price}</td>
         		</tr>
         		 <tr>
         			<td>상품명</td>
-        			<td>모델</td>
+        			<td>${vo.product_name}</td>
         		</tr>
         		 <tr>
         			<td>상품코드</td>
-        			<td>모델2</td>
+        			<td>${vo.product_code}</td>
         		</tr>
         		 <tr>
-        			<td>원가</td>
-        			<td>모델2</td>
+        			<td>요약설명</td>
+        			<td>${vo.summary}</td>
         		</tr>         		        		
         		<tr>
         			<td>주문수량</td>
@@ -90,6 +91,7 @@
         <a href="#" class="btn btn-danger">바로 구매</a>
         <a href="#" class="btn btn-danger">장바구니</a>
       </div>
+        	</c:forEach>
       </div>
       
 	  <!-- Related Projects Row -->

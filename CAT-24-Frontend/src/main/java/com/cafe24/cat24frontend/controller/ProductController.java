@@ -39,14 +39,20 @@ public class ProductController
 		
 		return "product/list";
 	}
+	
 	/** 해당 상품 보기 **/
 	@RequestMapping("/list/{product_no}")
-	public String get( @PathVariable( "product_no" ) Long product_no )
+	public String get( @PathVariable( "product_no" ) Long product_no, Model model )
 	{
-		ProductsVo get = productsService.get(product_no);
+		List<ProductsVo> get = productsService.get(product_no);
 		
 		System.out.println("test");
 		System.out.println(get);
+		
+		model.addAttribute("get",get);
+		
 		return "product/detail";
 	}
+
+
 }

@@ -1,5 +1,6 @@
 package com.cafe24.cat24.controller.api.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -75,6 +76,10 @@ public class ProductsController
 	{
 		ProductsVo product = productsService.get(product_no);
 		
+		List<ProductsVo> list = new ArrayList<ProductsVo>();
+		
+		list.add(product);
+		
 		// 해당 상품이  없을 경우
 		if(product == null)
 		{
@@ -83,7 +88,7 @@ public class ProductsController
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result); 
 		}
 		
-		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(product));
+		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(list));
 	}
 	
 	/** 상품 등록 **/

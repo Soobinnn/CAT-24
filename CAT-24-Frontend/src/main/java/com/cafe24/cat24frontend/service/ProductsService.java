@@ -10,5 +10,5 @@ public interface ProductsService
 	public List<ProductsVo> productlist();
 	
 	/** 해당 상품 보기 **/
-	public ProductsVo get(Long product_no);
+	public List<ProductsVo> get(Long product_no);
 }
