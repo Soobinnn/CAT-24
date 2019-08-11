@@ -95,7 +95,7 @@ public class CategoriesController
 	})
 	@GetMapping(value="/{category_no}/products/count")
 	public ResponseEntity<JSONResult> productcount(@RequestBody CategoriesVo categoriesVo, @PathVariable(value="category_no") Long category_no)
-	{
+	{ 
 		return ResponseEntity.status(HttpStatus.OK).body(JSONResult.success(categoriesVo));
 	}
 	
